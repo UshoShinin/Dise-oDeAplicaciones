@@ -1,10 +1,9 @@
-package Controlador;
+package modelo;
 
 import java.util.ArrayList;
-import logica.Cliente;
 
 
-public class ControladorCliente {
+public class SistemaClientes {
     
     private ArrayList<Cliente> clientes;
     

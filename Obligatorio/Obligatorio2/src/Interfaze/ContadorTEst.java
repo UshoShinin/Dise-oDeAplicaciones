@@ -6,7 +6,7 @@
 package Interfaze;
 
 import Controlador.Monitor;
-import logica.NumeroAtencion;
+import modelo.NumeroAtencion;
 import Controlador.ControladorArea;
 /**
  *

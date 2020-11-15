@@ -1,15 +1,13 @@
 package Controlador;
 
-import java.util.ArrayList;
-import logica.Area;
-import logica.NumeroAtencion;
+
+import modelo.NumeroAtencion;
 import observador.*;
 
 
 public class ControladorArea implements Observador {
     
-    private ArrayList<Area> areas;
-    private int costoFijo;
+    
     private NumeroAtencion modelo;
     private Monitor vista;
 

@@ -1,10 +1,9 @@
-package Controlador;
+package modelo;
 
 import java.util.ArrayList;
-import logica.Trabajador;
 
 
-public class ControladorTrabajador {
+public class SistemaTrabajadores {
 
    private ArrayList<Trabajador> trabajadores;
     

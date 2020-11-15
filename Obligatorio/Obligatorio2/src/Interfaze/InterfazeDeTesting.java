@@ -6,7 +6,7 @@
 
 package Interfaze;
 
-import logica.NumeroAtencion;
+import modelo.NumeroAtencion;
 
 /**
  *
