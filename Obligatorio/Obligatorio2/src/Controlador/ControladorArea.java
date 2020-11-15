@@ -1,17 +1,17 @@
 package Controlador;
 
 
-import modelo.NumeroAtencion;
+import modelo.Sistema;
 import observador.*;
 
 
 public class ControladorArea implements Observador {
     
     
-    private NumeroAtencion modelo;
+    private Sistema modelo;
     private Monitor vista;
 
-    public ControladorArea(NumeroAtencion modelo, Monitor v) {
+    public ControladorArea(Sistema modelo, Monitor v) {
         this.modelo = modelo;
         vista = v;
         modelo.agregar(this);
@@ -19,7 +19,7 @@ public class ControladorArea implements Observador {
     }
    
     
-    public NumeroAtencion getModelo(){
+    public Sistema getModelo(){
         return modelo;
     }
     
