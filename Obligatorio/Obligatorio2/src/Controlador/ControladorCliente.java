@@ -1,6 +1,7 @@
-package logica;
+package Controlador;
 
 import java.util.ArrayList;
+import logica.Cliente;
 
 
 public class ControladorCliente {
