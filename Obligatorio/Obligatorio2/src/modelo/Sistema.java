@@ -10,7 +10,7 @@ package modelo;
  * @author Intel i7
  */
 public class Sistema {
-    private Sistema sistema;
+    private static Sistema sistema;
     private SistemaAreas SubAreas;
     private SistemaClientes SubClientes;
     private SistemaTrabajadores SubTrabajadores;
@@ -21,7 +21,7 @@ public class Sistema {
         this.SubTrabajadores = new SistemaTrabajadores();
     }
     
-    public Sistema getInstancia(){
+    public static Sistema getInstancia(){
         return sistema;
     }
     
@@ -47,6 +47,13 @@ public class Sistema {
 
     public void setSubTrabajadores(SistemaTrabajadores SubTrabajadores) {
         this.SubTrabajadores = SubTrabajadores;
+    }
+
+    
+    //Abajo de aca voy dejando los metodos que vamos a tener que implementar
+    
+    public Trabajador loginTrabajador(int user, String pass) {
+        return SubTrabajadores.login(user, pass);
     }
     
     
