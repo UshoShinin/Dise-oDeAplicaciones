@@ -94,6 +94,9 @@ public class MostrarSectores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CiFildActionPerformed
 
+    public void mostrarSectores(ArrayList<Sector> sectores) {
+         new MostrarSectores(sectores).setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
