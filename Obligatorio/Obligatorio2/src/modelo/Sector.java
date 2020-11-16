@@ -5,45 +5,19 @@ import java.util.ArrayList;
 import observador.*;
 
 
-public class Sector implements Observador {
+public class Sector extends Observable{
     
     private String nombre;
     private ArrayList<Puesto> puestos;
     private ArrayList<Trabajador> trabajadores;
     private ArrayList<NumeroAtencion> numeroPendientes;
-    private VistaPedirNumero vista;
-    private NumeroAtencion modelo;
+    private int Ultimo;
+    
+    public enum Eventos{sacaronNumero};
 
-    public Sector(NumeroAtencion modelo, VistaPedirNumero v) {
-        this.modelo = modelo;
-        vista = v;
-        modelo.agregar(this);
-        vista.mostrarContador(modelo.getValor());
+    public Sector() {
     }
    
     
-    public NumeroAtencion getModelo(){
-        return modelo;
-    }
-    
-    @Override
-    public void actualizar(Observable origen, Object evento) {
-        if (origen == modelo){
-            switch((NumeroAtencion.Eventos)evento){
-                case cambioValor:
-                    vista.mostrarContador(modelo.getValor());
-                    break;
-                case reset:
-            }
-        }    
-    }
-    
-    public void sumar(){
-        modelo.sumar();
-    }
-    
-    public void restar(){
-        modelo.restar();
-    }
     
 }

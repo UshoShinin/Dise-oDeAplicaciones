@@ -2,10 +2,10 @@ package Controlador;
 
 
 import observador.*;
-import modelo.Sistema;
+import modelo.Sector;
 
 
-public class ControladorNumero{
+public class ControladorNumero implements Observador{
 
 
     private Sistema modelo;
@@ -34,5 +34,16 @@ public class ControladorNumero{
 //            }
 //        }    
 //    }
+
+    @Override
+    public void actualizar(Observable origen, Object evento) {
+        if (origen == modelo){
+            switch((NumeroAtencion.Eventos)evento){
+                case cambioValor:
+                    vista.mostrarContador(modelo.getValor());
+                    break;
+                case reset:
+            }
+      
 
 }
