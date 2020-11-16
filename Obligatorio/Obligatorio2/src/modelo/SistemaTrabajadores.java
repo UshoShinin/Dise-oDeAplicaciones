@@ -10,8 +10,9 @@ public class SistemaTrabajadores {
    
     //POR AHORA DEJO EL METODO ASI, HAY QUE VER COMO ES QUE SE ARMA LA EXCEPCION 
    //PARA DECIRLE QUE LA PASS ESTA MAL
-    public Trabajador login(int user, String pass) {
+    public Trabajador login(int user, String pass) throws ObligatorioException {
         Trabajador tra = buscarTrabajador(user);
+        if(tra == null || tra.getPass() != pass) throw new ObligatorioException("Los datos de ingreso no son correctos");
         return tra;
     }
     
