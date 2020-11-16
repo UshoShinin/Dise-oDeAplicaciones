@@ -7,15 +7,19 @@
 package Interfaze;
 
 import modelo.NumeroAtencion;
+import modelo.Sistema;
 
 /**
  *
  * @author Ivan
  */
 public class InterfazeDeTesting extends javax.swing.JFrame {
-
+    
+    private Sistema sistema;
+    
     /** Creates new form InterfazeDeTesting */
-    public InterfazeDeTesting() {
+    public InterfazeDeTesting(Sistema s) {
+        sistema = s;
         initComponents();
     }
 
@@ -78,7 +82,7 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
 
     private void CU2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU2ActionPerformed
 
-        new ContadorTEst(new NumeroAtencion()).setVisible(true);
+        new CUPedirNumero(sistema.getSubAreas().getAreas()).setVisible(true);
     }//GEN-LAST:event_CU2ActionPerformed
 
     /**
@@ -111,7 +115,8 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazeDeTesting().setVisible(true);
+                
+                new InterfazeDeTesting(new Sistema()).setVisible(true);
             }
         });
     }

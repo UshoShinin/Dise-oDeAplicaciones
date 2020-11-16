@@ -5,24 +5,27 @@
  */
 package Interfaze;
 
-import Controlador.Monitor;
+import Controlador.VistaPedirNumero;
+import java.util.ArrayList;
+import modelo.Area;
 import modelo.NumeroAtencion;
-import Controlador.ControladorArea;
+import modelo.Sector;
 /**
  *
  * @author Ivan
  */
-public class ContadorTEst extends javax.swing.JFrame implements Monitor {
+public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero {
 
     /**
      * Creates new form ContadorTEst
      */
-    private ControladorArea con;
+    private Sector con;
     
-    public ContadorTEst(NumeroAtencion modelo) {
+    public PedirNumero(NumeroAtencion modelo) {
         initComponents();
         setLocationRelativeTo(null);
-        con = new ControladorArea(modelo,this);
+        //El sector me tiene que llegar por parametros en siguente prueb
+        con = new Sector(modelo,this);
     }
 
     /**
@@ -113,44 +116,8 @@ public class ContadorTEst extends javax.swing.JFrame implements Monitor {
         nuevaVentana();
     }//GEN-LAST:event_NuevoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ContadorTEst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ContadorTEst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ContadorTEst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ContadorTEst.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                NumeroAtencion modelo = new NumeroAtencion();
-                new ContadorTEst(modelo).setVisible(true);
-            }
-        });
-    }
-    
     private void nuevaVentana() {
-        ContadorTEst vc = new ContadorTEst(con.getModelo());
+        PedirNumero vc = new PedirNumero(con.getModelo());
         vc.setVisible(true);
     }
 
@@ -168,7 +135,12 @@ public class ContadorTEst extends javax.swing.JFrame implements Monitor {
     }
 
     @Override
-    public void reset() {
+    public void mostrarAreas(ArrayList<Area> areas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarSectores(ArrayList<Sector> sectores) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

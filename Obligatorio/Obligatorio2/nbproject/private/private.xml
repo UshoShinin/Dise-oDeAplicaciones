@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/Puesto.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/ControladorTrabajador.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/Trabajador.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/NumeroAtencion.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/ControladorCliente.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/Area.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/Sector.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/ControladorArea.java</file>
-            <file>file:/E:/Facultad/ORT/Semestre%204/Diseño%20y%20Desarrollo%20de%20Aplicaciones/Obligatorio%202/Obligatorio/Obligatorio2/src/logica/Cliente.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/Controlador/Monitor.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/Interfaze/InterfazeDeTesting.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/Interfaze/ContadorTEst.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/Controlador/ControladorArea.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/modelo/Sistema.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/observador/Observable.java</file>
+            <file>file:/C:/Users/59895/Documents/ORT/Diseño/Dise-oDeAplicaciones/Obligatorio/Obligatorio2/src/modelo/SistemaAreas.java</file>
         </group>
     </open-files>
 </project-private>
