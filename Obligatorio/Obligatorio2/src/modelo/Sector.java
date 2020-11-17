@@ -19,6 +19,7 @@ public class Sector extends Observable{
     
     public Sector(String nombre){
         this.nombre = nombre;
+        this.puestos = new ArrayList<>();
     }
     
     public NumeroAtencion pedirNumero(Cliente cli) {
@@ -59,7 +60,10 @@ public class Sector extends Observable{
         for (Puesto p : puestos) {
             espera += p.tiempoPromedio();
         }
-        String ret = String.valueOf(espera/puestosDisponibles());
+        if(espera == 0){
+            return "Tiempo de espera: " + espera;
+        }
+        String ret = "Tiempo de espera: " + String.valueOf(espera/puestosDisponibles());
         return ret;
     }
     
