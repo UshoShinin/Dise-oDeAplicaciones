@@ -8,6 +8,7 @@ import modelo.NumeroAtencion;
 import modelo.ObligatorioException;
 import observador.*;
 import modelo.Sector;
+import modelo.Area;
 import modelo.Sistema;
 
 public class ControladorPedirNumero implements Observador {
@@ -17,10 +18,11 @@ public class ControladorPedirNumero implements Observador {
     private Sector S;
     private VistaPedirNumero vista;
 
-    public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v) {
+    public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v,Area A) {
         this.modelo = modelo;
         vista = v;
         //modelo.agregar(this);
+        //for(Sector S : )
         S.agregar(this);
         //vista.mostrarSectores(modelo.getSubAreas().getAreas());
     }

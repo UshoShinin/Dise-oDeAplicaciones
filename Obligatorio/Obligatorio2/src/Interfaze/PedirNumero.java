@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Controlador.ControladorPedirNumero;
 import modelo.NumeroAtencion;
 import modelo.Sector;
+import modelo.Area;
 import modelo.Sistema;
 import Controlador.VistaPedirNumero;
 
@@ -23,11 +24,11 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
      */
     private ControladorPedirNumero con;
     
-    public PedirNumero(Sistema modelo,ArrayList<Sector> sectores) {
+    public PedirNumero(Sistema modelo,Area A) {
         initComponents();
         setLocationRelativeTo(null);
         //El sector me tiene que llegar por parametros en siguente prueb
-        con = new ControladorPedirNumero(modelo,this); 
+        con = new ControladorPedirNumero(modelo,this,A); 
     }
 
     /**

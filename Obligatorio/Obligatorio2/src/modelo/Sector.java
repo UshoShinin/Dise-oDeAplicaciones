@@ -54,6 +54,15 @@ public class Sector extends Observable{
         return null;
     }
     
+    public String Espera(){
+        return "Aun no se";
+    }
+
+    @Override
+    public String toString() {
+        return nombre+ " " + Espera();
+    }
+    
     public int generarProximoNumero(){
         return ++ultimo;
     }
