@@ -5,24 +5,31 @@
  */
 package Interfaze;
 
-import Controlador.VistaPedirNumero;
+import Controlador.ControladorSeleccionarArea;
 import java.util.ArrayList;
 import modelo.Area;
+import modelo.NumeroAtencion;
 import modelo.Sector;
+import modelo.Sistema;
+import Controlador.VistaSeleccionarArea;
 
 /**
  *
  * @author Ivan
  */
-public class CUPedirNumero extends javax.swing.JFrame implements VistaPedirNumero {
+public class CUPedirNumero extends javax.swing.JFrame implements VistaSeleccionarArea {
 
     private ArrayList<Area> areas;
+    private ControladorSeleccionarArea con;
+    private Sistema modelo;
     /**
      * Creates new form SeleccionArea
      */
-    public CUPedirNumero(ArrayList<Area> areas) {
+    public CUPedirNumero(Sistema modelo) {
         initComponents();
-        this.areas = areas;
+        con = new ControladorSeleccionarArea(modelo,this);
+        this.modelo = modelo;
+        this.areas = modelo.getSubAreas().getAreas();
         mostrarAreas(this.areas);
     }
 
@@ -77,7 +84,7 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaPedirNumer
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         Area A =(Area)comboAreas.getSelectedValue();
         System.out.println(A);
-        mostrarSectores(A.getSectores());
+        new PedirNumero(modelo,A.getSectores()).setVisible(true);
        
     }//GEN-LAST:event_btnAreasActionPerformed
 
@@ -88,10 +95,6 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaPedirNumer
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mostrarContador(int valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void mostrarAreas(ArrayList<Area> areas) {
@@ -99,7 +102,7 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaPedirNumer
     }
 
     @Override
-    public void mostrarSectores(ArrayList<Sector> sectores) {
-         new MostrarSectores(sectores).setVisible(true);
+    public void mostrarError(String message) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

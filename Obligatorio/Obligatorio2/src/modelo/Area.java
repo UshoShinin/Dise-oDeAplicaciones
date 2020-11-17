@@ -7,9 +7,9 @@ public class Area {
     private String nombre;
     private ArrayList<Sector> sectores;
 
-    public Area(String nombre) {
+    public Area(String nombre,ArrayList<Sector> sectores) {
         this.nombre = nombre;
-        this.sectores = new ArrayList<Sector>();
+        this.sectores = sectores;
     }
 
     @Override

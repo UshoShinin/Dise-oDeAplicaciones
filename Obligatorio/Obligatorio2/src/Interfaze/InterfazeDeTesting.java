@@ -82,7 +82,7 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
 
     private void CU2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU2ActionPerformed
 
-        new CUPedirNumero(sistema.getSubAreas().getAreas()).setVisible(true);
+        new CUPedirNumero(sistema).setVisible(true);
     }//GEN-LAST:event_CU2ActionPerformed
 
     /**

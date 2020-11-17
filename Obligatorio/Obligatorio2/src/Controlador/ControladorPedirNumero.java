@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cliente;
@@ -9,20 +10,27 @@ import observador.*;
 import modelo.Sector;
 import modelo.Sistema;
 
-public class ControladorNumero implements Observador {
+public class ControladorPedirNumero implements Observador {
 
     private Sistema modelo;
+    private ArrayList<Sector> sectores;
+    private Sector S;
     private VistaPedirNumero vista;
 
-    public ControladorNumero(Sistema modelo, VistaPedirNumero v) {
+    public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v) {
         this.modelo = modelo;
         vista = v;
         //modelo.agregar(this);
-        vista.mostrarAreas(modelo.getSubAreas().getAreas());
+        S.agregar(this);
+        //vista.mostrarSectores(modelo.getSubAreas().getAreas());
     }
 
     public Sistema getModelo() {
         return modelo;
+    }
+    
+    public Sector getS(){
+        return S;
     }
 
     //me tiene que llegar un sector por parametro
@@ -34,7 +42,7 @@ public class ControladorNumero implements Observador {
             //Por ahora cuando pido un numero me terminan devolviendo ese numero
             //Capaz que no necesito estoy nada mas tengo que llamar a pedir numero
             NumeroAtencion na = s.pedirNumero(cli);
-            vista.mostrarNumeroCliente(na);
+            
         } catch (ObligatorioException ex) {
             vista.mostrarError(ex.getMessage());
         }
@@ -53,11 +61,9 @@ public class ControladorNumero implements Observador {
 //    }
     @Override
     public void actualizar(Observable origen, Object evento) {
-        switch ((NumeroAtencion.Eventos) evento) {
-            case cambioValor:
-                //vista.mostrarContador(modelo.getValor());
-                break;
-            case reset:
+        switch ((Sector.Eventos) evento) {
+            case sacaronNumero:
+                //vista.mostrarNumeroCliente(na);
                 break;
         }
     }

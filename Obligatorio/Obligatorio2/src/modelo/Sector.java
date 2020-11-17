@@ -1,10 +1,10 @@
 package modelo;
 
-import Controlador.VistaPedirNumero;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import observador.*;
+import Controlador.VistaSeleccionarArea;
 
 
 public class Sector extends Observable{
@@ -17,9 +17,9 @@ public class Sector extends Observable{
 
     public enum Eventos{sacaronNumero};
     
-    public Sector() {
+    public Sector(String nombre){
+        this.nombre = nombre;
     }
-    
     
     public NumeroAtencion pedirNumero(Cliente cli) {
         //Creo un numero de atencion nada mas con la fecha de sacado

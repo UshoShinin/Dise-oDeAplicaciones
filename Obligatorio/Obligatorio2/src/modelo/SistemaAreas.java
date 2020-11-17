@@ -9,10 +9,14 @@ public class SistemaAreas {
     public SistemaAreas() {
         this.areas = new ArrayList<Area>();
         //Precarga
-        areas.add(new Area("Area 1"));
-        areas.add(new Area("Area 2"));
-        areas.add(new Area("Area 3"));
-        areas.add(new Area("Area 4"));
+        ArrayList<Sector> sectores1 = new ArrayList<Sector>();
+        ArrayList<Sector> sectores2 = new ArrayList<Sector>();
+        ArrayList<Sector> sectores3 = new ArrayList<Sector>();
+        ArrayList<Sector> sectores4 = new ArrayList<Sector>();
+        areas.add(new Area("Area 1",sectores1));
+        areas.add(new Area("Area 2",sectores2));
+        areas.add(new Area("Area 3",sectores3));
+        areas.add(new Area("Area 4",sectores4));
     }
 
     public ArrayList<Area> getAreas() {

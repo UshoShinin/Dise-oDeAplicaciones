@@ -5,27 +5,29 @@
  */
 package Interfaze;
 
-import Controlador.VistaPedirNumero;
 import java.util.ArrayList;
-import modelo.Area;
+import Controlador.ControladorPedirNumero;
 import modelo.NumeroAtencion;
 import modelo.Sector;
+import modelo.Sistema;
+import Controlador.VistaPedirNumero;
+
 /**
  *
  * @author Ivan
  */
-public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero {
+public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero  {
 
     /**
      * Creates new form ContadorTEst
      */
-    private Sector con;
+    private ControladorPedirNumero con;
     
-    public PedirNumero(NumeroAtencion modelo) {
+    public PedirNumero(Sistema modelo,ArrayList<Sector> sectores) {
         initComponents();
         setLocationRelativeTo(null);
         //El sector me tiene que llegar por parametros en siguente prueb
-        con = new Sector(modelo,this);
+        con = new ControladorPedirNumero(modelo,this); 
     }
 
     /**
@@ -37,111 +39,72 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        display = new javax.swing.JTextField();
-        mas = new javax.swing.JButton();
-        menos = new javax.swing.JButton();
-        Nuevo = new javax.swing.JButton();
+        btnSectores = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        comboSectores = new javax.swing.JList();
+        CICliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        display.setEditable(false);
-        display.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        display.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        mas.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        mas.setText("+");
-        mas.addActionListener(new java.awt.event.ActionListener() {
+        btnSectores.setText("Pedir número");
+        btnSectores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                masActionPerformed(evt);
+                btnSectoresActionPerformed(evt);
             }
         });
 
-        menos.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        menos.setText("-");
-        menos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menosActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(comboSectores);
 
-        Nuevo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        Nuevo.setText("Clone");
-        Nuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NuevoActionPerformed(evt);
-            }
-        });
+        CICliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(mas, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(menos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                    .addComponent(btnSectores, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                    .addComponent(CICliente))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nuevo))
-                .addGap(44, 44, 44))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(CICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSectores))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void masActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masActionPerformed
-        con.sumar();
-    }//GEN-LAST:event_masActionPerformed
+    private void btnSectoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSectoresActionPerformed
+        Sector S =(Sector)comboSectores.getSelectedValue();
+        System.out.println(S);
+        
 
-    private void menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosActionPerformed
-        con.restar();
-    }//GEN-LAST:event_menosActionPerformed
+    }//GEN-LAST:event_btnSectoresActionPerformed
 
-    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
-        nuevaVentana();
-    }//GEN-LAST:event_NuevoActionPerformed
-
-    private void nuevaVentana() {
-        PedirNumero vc = new PedirNumero(con.getModelo());
-        vc.setVisible(true);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Nuevo;
-    private javax.swing.JTextField display;
-    private javax.swing.JButton mas;
-    private javax.swing.JButton menos;
+    private javax.swing.JTextField CICliente;
+    private javax.swing.JButton btnSectores;
+    private javax.swing.JList comboSectores;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mostrarContador(int valor) {
-        setTitle("");
-        display.setText(valor + "");
-    }
-
-    @Override
-    public void mostrarAreas(ArrayList<Area> areas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
+    
     public void mostrarSectores(ArrayList<Sector> sectores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         comboSectores.setListData(sectores.toArray());
     }
 
     @Override
@@ -150,8 +113,9 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     }
 
     @Override
-    public void mostrarNumeroCliente(NumeroAtencion na) {
+    public void mostrarNumeroCliente() {
         //Aca tenemos que tener una manera de mostrar el Valor del numero, nombre del cliente, fecha de cuando lo sacaron y el nombre para el sector
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

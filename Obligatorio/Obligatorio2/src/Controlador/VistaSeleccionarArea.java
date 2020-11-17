@@ -6,14 +6,16 @@
 package Controlador;
 
 import java.util.ArrayList;
-import modelo.Sector;
+import modelo.Area;
+
 
 /**
  *
  * @author Ivan
  */
-public interface VistaPedirNumero {
+public interface VistaSeleccionarArea {
+
+    public void mostrarAreas(ArrayList<Area> areas);
+    
     public void mostrarError(String message);
-    public void mostrarNumeroCliente();
-    public void mostrarSectores(ArrayList<Sector> sectores);
 }
