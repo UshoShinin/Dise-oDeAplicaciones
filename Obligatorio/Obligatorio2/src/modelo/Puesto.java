@@ -42,5 +42,13 @@ public class Puesto {
         this.numeroActual = na;
     }
     
+    public float tiempoPromedio(){
+        float ret = 0;
+        for (NumeroAtencion np : numerosProcesados) {
+            ret += np.duracionAten();
+        }
+        return ret;
+    }
+    
     
 }

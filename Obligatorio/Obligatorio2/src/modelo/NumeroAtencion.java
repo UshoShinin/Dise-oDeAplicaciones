@@ -25,6 +25,10 @@ public class NumeroAtencion extends Observable{
         this.sector = sector;
     }
     
+    public float duracionAten(){
+        return fechaInicio.getTime()/1000 - fechaFin.getTime()/1000;
+    }
+    
     
     public int getValor(){
         return numero;
