@@ -9,4 +9,38 @@ public class Puesto {
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
+
+    public int getNumPuesto() {
+        return numPuesto;
+    }
+
+    public void setNumPuesto(int numPuesto) {
+        this.numPuesto = numPuesto;
+    }
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+
+    public NumeroAtencion getNumeroActual() {
+        return numeroActual;
+    }
+
+    public ArrayList<NumeroAtencion> getNumerosProcesados() {
+        return numerosProcesados;
+    }
+
+    public void setNumerosProcesados(ArrayList<NumeroAtencion> numerosProcesados) {
+        this.numerosProcesados = numerosProcesados;
+    }
+
+    void asignarNumero(NumeroAtencion na) {
+        this.numeroActual = na;
+    }
+    
+    
 }

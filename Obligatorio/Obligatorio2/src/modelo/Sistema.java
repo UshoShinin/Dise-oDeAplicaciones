@@ -55,6 +55,9 @@ public class Sistema {
     public Trabajador loginTrabajador(int user, String pass) throws ObligatorioException {
         return SubTrabajadores.login(user, pass);
     }
-    
-    
+
+    public Cliente buscarCliente(int numeroDeCliente) throws ObligatorioException {
+        return SubClientes.buscarCliente(numeroDeCliente);
+    }
+  
 }

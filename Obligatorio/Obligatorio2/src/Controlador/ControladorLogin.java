@@ -26,9 +26,6 @@ public class ControladorLogin {
         } catch (ObligatorioException oe) {
             vista.mostrarError(oe.getMessage());
         }
-        
-        //El metodo de abajo no entiendo muy bien para que lo necesitariamos
-        vista.ingresar(trabajador);
     }
     
     

@@ -3,17 +3,28 @@ package modelo;
 import java.util.Date;
 import observador.Observable;
 
+//TENEMOS QUE REVISAR DE SI QUEREMOS QUE ESTO SEA OBSERVABLE PARA MI NO TIENE PORQUE SERLO
 
 public class NumeroAtencion extends Observable{
     
-    private int numero = 0;
+    private int numero;
     private Date fechaSacado;
     private Date fechaInicio;
     private Date fechaFin;
     private String descripcion;
     private Trabajador trabajador;
+    private Cliente cliente;
+    private Sector sector;
     
     public enum Eventos{cambioValor,reset;}
+
+    public NumeroAtencion(Date fechaSacado, int numero, Cliente cli, Sector sector) {
+        this.fechaSacado = fechaSacado;
+        this.numero = numero;
+        this.cliente = cli;
+        this.sector = sector;
+    }
+    
     
     public int getValor(){
         return numero;

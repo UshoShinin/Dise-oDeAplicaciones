@@ -143,4 +143,15 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     public void mostrarSectores(ArrayList<Sector> sectores) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void mostrarError(String message) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarNumeroCliente(NumeroAtencion na) {
+        //Aca tenemos que tener una manera de mostrar el Valor del numero, nombre del cliente, fecha de cuando lo sacaron y el nombre para el sector
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
