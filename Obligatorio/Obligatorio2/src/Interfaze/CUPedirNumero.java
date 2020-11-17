@@ -84,7 +84,7 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaSelecciona
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         Area A =(Area)comboAreas.getSelectedValue();
         System.out.println(A);
-        new PedirNumero(modelo,A.getSectores()).setVisible(true);
+        new PedirNumero(modelo,A).setVisible(true);
        
     }//GEN-LAST:event_btnAreasActionPerformed
 

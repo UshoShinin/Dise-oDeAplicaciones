@@ -21,10 +21,12 @@ public class ControladorPedirNumero implements Observador {
     public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v,Area A) {
         this.modelo = modelo;
         vista = v;
-        //modelo.agregar(this);
-        //for(Sector S : )
-        S.agregar(this);
-        //vista.mostrarSectores(modelo.getSubAreas().getAreas());
+        ArrayList<Sector> sectores = A.getSectores();
+        for(Sector S : sectores){
+            S.agregar(this);
+        }
+        
+        vista.mostrarSectores(sectores);
     }
 
     public Sistema getModelo() {

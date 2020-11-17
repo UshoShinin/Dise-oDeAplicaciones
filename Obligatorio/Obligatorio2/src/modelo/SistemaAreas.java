@@ -26,11 +26,11 @@ public class SistemaAreas {
         sectores3.add(new Sector("S9"));
         sectores3.add(new Sector("S10"));
         
-        sectores4.add(new Sector("S10"));
         sectores4.add(new Sector("S11"));
         sectores4.add(new Sector("S12"));
         sectores4.add(new Sector("S13"));
         sectores4.add(new Sector("S14"));
+        sectores4.add(new Sector("S15"));
         
         areas.add(new Area("Area 1",sectores1));
         areas.add(new Area("Area 2",sectores2));
