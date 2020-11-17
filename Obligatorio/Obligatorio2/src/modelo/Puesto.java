@@ -47,7 +47,15 @@ public class Puesto {
         for (NumeroAtencion np : numerosProcesados) {
             ret += np.duracionAten();
         }
-        return ret;
+        return ret/numerosProcesados.size();
+    }
+
+    public boolean disponible() {
+        if(this.trabajador == null){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     

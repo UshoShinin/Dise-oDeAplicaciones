@@ -55,7 +55,22 @@ public class Sector extends Observable{
     }
     
     public String Espera(){
-        return "Aun no se";
+        float espera = 0;
+        for (Puesto p : puestos) {
+            espera += p.tiempoPromedio();
+        }
+        String ret = String.valueOf(espera/puestosDisponibles());
+        return ret;
+    }
+    
+    private int puestosDisponibles(){
+        int ret = 0;
+        for (Puesto p : puestos) {
+            if(p.disponible()){
+                ret++;
+            }
+        }
+        return ret;
     }
 
     @Override
