@@ -40,5 +40,14 @@ public class Trabajador {
     public void setSector(Sector sector) {
         this.sector = sector;
     }
+
+    public Trabajador(int cedula, String pass, String nombreCompleto, Sector sector) {
+        this.cedula = cedula;
+        this.pass = pass;
+        this.nombreCompleto = nombreCompleto;
+        this.sector = sector;
+    }
+    
+    
     
 }

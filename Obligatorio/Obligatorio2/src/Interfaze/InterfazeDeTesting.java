@@ -39,6 +39,11 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         CU1.setText("Tabajadores Ingresar a la aplicación");
+        CU1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CU1ActionPerformed(evt);
+            }
+        });
 
         CU2.setText("Pedir Número");
         CU2.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +89,10 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
 
         new CUPedirNumero(sistema).setVisible(true);
     }//GEN-LAST:event_CU2ActionPerformed
+
+    private void CU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU1ActionPerformed
+       new Login(sistema).setVisible(true);
+    }//GEN-LAST:event_CU1ActionPerformed
 
     /**
      * @param args the command line arguments

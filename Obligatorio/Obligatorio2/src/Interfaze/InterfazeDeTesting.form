@@ -59,6 +59,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tabajadores Ingresar a la aplicaci&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CU1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CU2">
       <Properties>
