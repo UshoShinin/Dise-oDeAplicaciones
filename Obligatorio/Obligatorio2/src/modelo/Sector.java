@@ -16,9 +16,6 @@ public class Sector extends Observable{
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
 
-   
-
-
     public enum Eventos{sacaronNumero};
     
     public Sector(String nombre, int cp, Area area){

@@ -1,8 +1,9 @@
 package modelo;
 
 import java.util.ArrayList;
+import observador.Observable;
 
-public class Puesto {
+public class Puesto extends Observable{
 
     private int numPuesto;
     private Sector sector;
@@ -10,6 +11,8 @@ public class Puesto {
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
+    public enum Eventos{NuevoCliente,Libre}
+    
     public Puesto(int numPuesto, Sector sector) {
         this.numPuesto = numPuesto;
         this.sector = sector;
@@ -51,6 +54,8 @@ public class Puesto {
     }
 
     void asignarNumero(NumeroAtencion na) {
+        if(na==null) avisar(Eventos.Libre);
+        else avisar(Eventos.NuevoCliente);
         this.numeroActual = na;
     }
 

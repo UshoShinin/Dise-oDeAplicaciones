@@ -6,6 +6,8 @@
 package Interfaze;
 
 
+import Controlador.ControladorAtencion;
+import Controlador.VistaAtencionCliente;
 import modelo.Puesto;
 import modelo.Sector;
 import modelo.Area;
@@ -14,27 +16,32 @@ import modelo.Area;
  *
  * @author Ivan
  */
-public class AtenderCliente extends javax.swing.JFrame {
+public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionCliente {
 
     private Puesto puesto;
     private Sector sector;
     private Area area;
+    private ControladorAtencion con;
     /**
      * Creates new form AtenderCliente
      */
-    public AtenderCliente(Puesto P) {
+    public AtenderCliente(Puesto P){
         initComponents();
         this.puesto = P;
         this.sector = puesto.getSector();
         this.area = sector.getArea();
-        cargarDatos();
+        this.con = new ControladorAtencion(this,P);
+        seteoInicial();
         
     }
     
-    public void cargarDatos(){
+    public void seteoInicial(){
         NPuesto.setText(String.valueOf(puesto.getNumPuesto()));
         NSector.setText(sector.getNombre());
         NArea.setText(area.getNombre());
+        IAtencion.setEnabled(false);
+        FAtencion.setEnabled(false);
+        FS.setEnabled(false);
     }
 
     /**
@@ -54,14 +61,14 @@ public class AtenderCliente extends javax.swing.JFrame {
         NArea = new javax.swing.JLabel();
         CantNum = new javax.swing.JLabel();
         Tprom = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        IAtencion = new javax.swing.JButton();
+        FAtencion = new javax.swing.JButton();
+        FS = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         NSector = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,14 +96,19 @@ public class AtenderCliente extends javax.swing.JFrame {
         Tprom.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         Tprom.setText("0");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Iniciar atención");
+        IAtencion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        IAtencion.setText("Iniciar atención");
+        IAtencion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IAtencionActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setText("Finalizar atención");
+        FAtencion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        FAtencion.setText("Finalizar atención");
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setText("Finalizar y salir");
+        FS.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        FS.setText("Finalizar y salir");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -108,8 +120,8 @@ public class AtenderCliente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel5.setText("Sector");
 
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton4.setText("Salir");
+        Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Salir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,13 +153,13 @@ public class AtenderCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(IAtencion)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(FAtencion)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(FS)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(Salir))
                     .addComponent(jScrollPane1))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -158,10 +170,10 @@ public class AtenderCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NPuesto)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(IAtencion)
+                    .addComponent(FAtencion)
+                    .addComponent(FS)
+                    .addComponent(Salir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,20 +199,24 @@ public class AtenderCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void IAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IAtencionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IAtencionActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CantNum;
+    private javax.swing.JButton FAtencion;
+    private javax.swing.JButton FS;
+    private javax.swing.JButton IAtencion;
     private javax.swing.JLabel NArea;
     public javax.swing.JLabel NPuesto;
     private javax.swing.JLabel NSector;
+    private javax.swing.JButton Salir;
     private javax.swing.JLabel Tprom;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
