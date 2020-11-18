@@ -16,7 +16,7 @@ public class ControladorLogin {
         this.modelo = modelo;
     }
     
-    public void login (int user, String pass){
+    public void login (String user, String pass){
         //La exception tiene que ir mas o menos asi, hay que ver porque no queda bien
         try {
             Trabajador trabajador = modelo.loginTrabajador(user, pass);

@@ -12,7 +12,7 @@ import modelo.Trabajador;
  * @author Intel i7
  */
 public interface VistaLogin {
-    public void login (int user, String pass);
+    public void login (String user, String pass);
 
     public void mostrarError(String message);
 

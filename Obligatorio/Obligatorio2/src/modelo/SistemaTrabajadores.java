@@ -18,9 +18,11 @@ public class SistemaTrabajadores {
    
     //POR AHORA DEJO EL METODO ASI, HAY QUE VER COMO ES QUE SE ARMA LA EXCEPCION 
    //PARA DECIRLE QUE LA PASS ESTA MAL
-    public Trabajador login(int user, String pass) throws ObligatorioException {
-        Trabajador tra = buscarTrabajador(user);
-        if(tra == null || tra.getPass() != pass) throw new ObligatorioException("Los datos de ingreso no son correctos");
+    public Trabajador login(String user, String pass) throws ObligatorioException {
+        if(user.isEmpty() || pass.isEmpty()) throw new ObligatorioException("Debe rellenar los campos");
+        Trabajador tra = buscarTrabajador(Integer.parseInt(user));
+        System.out.println(tra);
+        if(tra == null || !tra.getPass().equals(pass)) throw new ObligatorioException("Los datos de ingreso no son correctos");
         return tra;
     }
     

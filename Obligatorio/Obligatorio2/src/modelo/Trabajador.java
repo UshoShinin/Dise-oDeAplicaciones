@@ -47,7 +47,10 @@ public class Trabajador {
         this.nombreCompleto = nombreCompleto;
         this.sector = sector;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Trabajador{" + "cedula=" + cedula + ", pass=" + pass + ", nombreCompleto=" + nombreCompleto + '}';
+    }
     
 }

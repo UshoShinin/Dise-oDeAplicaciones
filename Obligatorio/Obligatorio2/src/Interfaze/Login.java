@@ -112,12 +112,12 @@ public class Login extends javax.swing.JFrame implements VistaLogin {
     public void conseguirDatosLogin(){
         String user = txtUsuario.getText();
         String pass = txtPass.getText();
-        login(Integer.parseInt(user), pass);
+        login(user, pass);
     }
     
     
     @Override
-    public void login(int user, String pass) {
+    public void login(String user, String pass) {
         controlador.login(user, pass);
     }
 

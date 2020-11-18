@@ -52,7 +52,7 @@ public class Sistema {
     
     //Abajo de aca voy dejando los metodos que vamos a tener que implementar
     
-    public Trabajador loginTrabajador(int user, String pass) throws ObligatorioException {
+    public Trabajador loginTrabajador(String user, String pass) throws ObligatorioException {
         return SubTrabajadores.login(user, pass);
     }
 
