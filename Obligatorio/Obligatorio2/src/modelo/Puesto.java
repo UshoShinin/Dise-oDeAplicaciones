@@ -18,6 +18,10 @@ public class Puesto {
         this.numerosProcesados = new ArrayList<NumeroAtencion>();
     }
 
+    public Sector getSector() {
+        return sector;
+    }
+
     public int getNumPuesto() {
         return numPuesto;
     }

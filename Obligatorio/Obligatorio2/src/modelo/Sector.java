@@ -60,6 +60,10 @@ public class Sector extends Observable{
     public void ponerNumeroPendiente(NumeroAtencion na){
         numeroPendientes.add(na);
     }
+
+    public String getNombre() {
+        return nombre;
+    }
     
     //Devuelve el primer puesto disponible que haya
     public Puesto puestoDisponible(){

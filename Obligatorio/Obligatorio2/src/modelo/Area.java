@@ -20,6 +20,12 @@ public class Area {
     public ArrayList<Sector> getSectores() {
         return sectores;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
     
     public void AgragarSector(Sector S){
         sectores.add(S);

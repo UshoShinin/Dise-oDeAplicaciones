@@ -84,7 +84,6 @@ public class Sistema {
         SubTrabajadores.getTrabajadores().add(T3);
         S.AgregarTrabajador(T3);
         
-        
         //Precarga Areas
         A1.AgragarSector(S);
         A1.AgragarSector(new Sector("S2",4,A1));
@@ -109,7 +108,6 @@ public class Sistema {
         SubAreas.getAreas().add(A2);
         SubAreas.getAreas().add(A3);
         SubAreas.getAreas().add(A4);
-
         
         ConCosto tipo1 = new ConCosto();
         Exonerado tipo2 = new Exonerado();
