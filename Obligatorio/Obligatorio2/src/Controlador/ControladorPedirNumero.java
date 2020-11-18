@@ -25,7 +25,6 @@ public class ControladorPedirNumero implements Observador {
         for(Sector S : sectores){
             S.agregar(this);
         }
-        
         vista.mostrarSectores(sectores);
     }
 
@@ -45,7 +44,8 @@ public class ControladorPedirNumero implements Observador {
             Cliente cli = modelo.buscarCliente(numeroDeCliente);
             //Por ahora cuando pido un numero me terminan devolviendo ese numero
             //Capaz que no necesito estoy nada mas tengo que llamar a pedir numero
-            NumeroAtencion na = s.pedirNumero(cli);
+            this.S = s;
+            NumeroAtencion na = S.pedirNumero(cli);
             
         } catch (ObligatorioException ex) {
             vista.mostrarError(ex.getMessage());
@@ -67,7 +67,7 @@ public class ControladorPedirNumero implements Observador {
     public void actualizar(Observable origen, Object evento) {
         switch ((Sector.Eventos) evento) {
             case sacaronNumero:
-                //vista.mostrarNumeroCliente(na);
+                vista.mostrarNumeroCliente(S.getUltimo());
                 break;
         }
     }

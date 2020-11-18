@@ -44,6 +44,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         jScrollPane1 = new javax.swing.JScrollPane();
         comboSectores = new javax.swing.JList();
         CICliente = new javax.swing.JTextField();
+        MostNum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +58,19 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         jScrollPane1.setViewportView(comboSectores);
 
         CICliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CICliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CIClienteActionPerformed(evt);
+            }
+        });
+
+        MostNum.setEditable(false);
+        MostNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        MostNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostNumActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,7 +82,8 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSectores, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                    .addComponent(CICliente))
+                    .addComponent(CICliente)
+                    .addComponent(MostNum))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +95,9 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
                         .addGap(8, 8, 8)
                         .addComponent(CICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSectores))
+                        .addComponent(btnSectores)
+                        .addGap(70, 70, 70)
+                        .addComponent(MostNum, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
@@ -90,14 +107,24 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     private void btnSectoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSectoresActionPerformed
         Sector S =(Sector)comboSectores.getSelectedValue();
-        System.out.println(S);
+        int CI = Integer.parseInt(CICliente.getText());
+        con.pedirNumero(S, CI);
         
 
     }//GEN-LAST:event_btnSectoresActionPerformed
 
+    private void CIClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CIClienteActionPerformed
+
+    private void MostNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MostNumActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CICliente;
+    private javax.swing.JTextField MostNum;
     private javax.swing.JButton btnSectores;
     private javax.swing.JList comboSectores;
     private javax.swing.JScrollPane jScrollPane1;
@@ -114,9 +141,8 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     }
 
     @Override
-    public void mostrarNumeroCliente() {
-        //Aca tenemos que tener una manera de mostrar el Valor del numero, nombre del cliente, fecha de cuando lo sacaron y el nombre para el sector
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mostrarNumeroCliente(NumeroAtencion N) {
+        MostNum.setText(String.valueOf(N.getValor()));
     }
 
 }

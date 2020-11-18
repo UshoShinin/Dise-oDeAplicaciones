@@ -7,6 +7,14 @@ public class Cliente {
     private String nombreCompleto;
     private String email;
 
+    public Cliente(int cedula, String nombreCompleto, String email) {
+        this.cedula = cedula;
+        this.nombreCompleto = nombreCompleto;
+        this.email = email;
+    }
+
+    
+    
     public int getCedula() {
         return cedula;
     }

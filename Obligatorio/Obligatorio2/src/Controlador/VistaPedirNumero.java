@@ -6,6 +6,7 @@
 package Controlador;
 
 import java.util.ArrayList;
+import modelo.NumeroAtencion;
 import modelo.Sector;
 
 /**
@@ -14,6 +15,6 @@ import modelo.Sector;
  */
 public interface VistaPedirNumero {
     public void mostrarError(String message);
-    public void mostrarNumeroCliente();
+    public void mostrarNumeroCliente(NumeroAtencion N);
     public void mostrarSectores(ArrayList<Sector> sectores);
 }

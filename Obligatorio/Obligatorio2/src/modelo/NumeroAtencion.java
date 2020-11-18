@@ -18,6 +18,10 @@ public class NumeroAtencion extends Observable{
     
     public enum Eventos{cambioValor,reset;}
 
+    public NumeroAtencion() {
+        this.numero = 0;
+    }
+    
     public NumeroAtencion(Date fechaSacado, int numero, Cliente cli, Sector sector) {
         this.fechaSacado = fechaSacado;
         this.numero = numero;
@@ -42,5 +46,12 @@ public class NumeroAtencion extends Observable{
         numero--;
         avisar(Eventos.cambioValor);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(numero);
+    }
+    
+    
     
 }
