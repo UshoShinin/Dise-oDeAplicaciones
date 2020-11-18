@@ -7,9 +7,9 @@ public class Area {
     private String nombre;
     private ArrayList<Sector> sectores;
 
-    public Area(String nombre,ArrayList<Sector> sectores) {
+    public Area(String nombre) {
         this.nombre = nombre;
-        this.sectores = sectores;
+        this.sectores = new ArrayList<Sector>();
     }
 
     @Override
@@ -20,6 +20,12 @@ public class Area {
     public ArrayList<Sector> getSectores() {
         return sectores;
     }
+    
+    public void AgragarSector(Sector S){
+        sectores.add(S);
+        S.setArea(this);
+    }
+    
 }
 
 

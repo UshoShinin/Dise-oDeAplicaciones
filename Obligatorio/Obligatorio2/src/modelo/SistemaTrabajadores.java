@@ -18,7 +18,6 @@ public class SistemaTrabajadores {
     public Trabajador login(String user, String pass) throws ObligatorioException {
         if(user.isEmpty() || pass.isEmpty()) throw new ObligatorioException("Debe rellenar los campos");
         Trabajador tra = buscarTrabajador(Integer.parseInt(user));
-        System.out.println(tra);
         if(tra == null || !tra.getPass().equals(pass)) throw new ObligatorioException("Los datos de ingreso no son correctos");
         return tra;
     }

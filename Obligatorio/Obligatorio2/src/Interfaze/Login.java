@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame implements VistaLogin {
 
     @Override
     public void ingresar(Trabajador trabajador) {
-        dispose();
+        //dispose();
         new ElegirPuesto(trabajador).setVisible(true);
     }
 }

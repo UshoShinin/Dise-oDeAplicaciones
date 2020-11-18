@@ -6,12 +6,14 @@ import java.util.ArrayList;
 public class Puesto {
     
     private int numPuesto;
+    private Sector sector;
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
-    public Puesto(int numPuesto) {
+    public Puesto(int numPuesto,Sector sector) {
         this.numPuesto = numPuesto;
+        this.sector = sector;
         this.trabajador = null;
         this.numeroActual = null;
         this.numerosProcesados = new ArrayList<NumeroAtencion>();

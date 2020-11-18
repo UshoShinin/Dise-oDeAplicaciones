@@ -10,6 +10,7 @@ import Controlador.VistaSeleccionarArea;
 public class Sector extends Observable{
     
     private String nombre;
+    private Area area;
     private ArrayList<Puesto> puestos;
     private ArrayList<Trabajador> trabajadores;
     private ArrayList<NumeroAtencion> numeroPendientes;
@@ -17,14 +18,15 @@ public class Sector extends Observable{
 
     public enum Eventos{sacaronNumero};
     
-    public Sector(String nombre, int cp){
+    public Sector(String nombre, int cp, Area area){
         this.nombre = nombre;
+        this.area = area;
         this.ultimo = new NumeroAtencion();
         this.numeroPendientes = new ArrayList<NumeroAtencion>();
         this.trabajadores = new ArrayList<Trabajador>();
         this.puestos = new ArrayList<>();
         for(int i= 1;i<=cp;i++){
-            this.puestos.add(new Puesto(i));
+            this.puestos.add(new Puesto(i,this));
         }
         
     }
@@ -54,9 +56,6 @@ public class Sector extends Observable{
     
     public void ponerNumeroPendiente(NumeroAtencion na){
         numeroPendientes.add(na);
-        for(NumeroAtencion N : numeroPendientes){
-            System.out.println(N);
-        }
     }
     
     //Devuelve el primer puesto disponible que haya
@@ -108,4 +107,13 @@ public class Sector extends Observable{
         int N = ultimo.getValor()+1;
         return N;
     }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+    
 }

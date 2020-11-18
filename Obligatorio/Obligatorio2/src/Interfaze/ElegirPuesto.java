@@ -42,6 +42,11 @@ public class ElegirPuesto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(comboPuestos);
 
         btnPuestos.setText("Seleccionar");
+        btnPuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPuestosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,12 +75,11 @@ public class ElegirPuesto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuestosActionPerformed
+        new AtenderCliente((Puesto)comboPuestos.getSelectedValue());
+    }//GEN-LAST:event_btnPuestosActionPerformed
+
     public void mostrarPuestos(){
-        System.out.println(trabajador);
-        System.out.println(trabajador.getSector());
-        for(Puesto P : trabajador.getSector().getPuestos()){
-            System.out.println(P);
-        }
         comboPuestos.setListData(trabajador.getSector().getPuestos().toArray());
     }
 

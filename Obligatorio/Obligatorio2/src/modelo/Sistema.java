@@ -67,8 +67,12 @@ public class Sistema {
     
     private void CargaDeDatos(){
         DatosCargados=true;
+        Area A1 =new Area("Area 1");
+        Area A2 =new Area("Area 2");
+        Area A3 =new Area("Area 3");
+        Area A4 =new Area("Area 4");
         //PrecargaTrabajadores;
-        Sector S =new Sector("S1",3);
+        Sector S =new Sector("S1",3,A1);
         Trabajador T1 = new Trabajador(1, "1", "Pepe ElCapo", S);
         Trabajador T2 = new Trabajador(2, "2", "Nestor ElCapo", S);
         Trabajador T3 = new Trabajador(3, "3", "Guille ElCapo", S);
@@ -80,35 +84,31 @@ public class Sistema {
         SubTrabajadores.getTrabajadores().add(T3);
         S.AgregarTrabajador(T3);
         
-        //Precarga Areas
-        ArrayList<Sector> sectores1 = new ArrayList<Sector>();
-        ArrayList<Sector> sectores2 = new ArrayList<Sector>();
-        ArrayList<Sector> sectores3 = new ArrayList<Sector>();
-        ArrayList<Sector> sectores4 = new ArrayList<Sector>();
         
-        sectores1.add(S);
-        sectores1.add(new Sector("S2",4));
-        sectores1.add(new Sector("S3",5));
+        //Precarga Areas
+        A1.AgragarSector(S);
+        A1.AgragarSector(new Sector("S2",4,A1));
+        A1.AgragarSector(new Sector("S3",5,A1));
 
-        sectores2.add(new Sector("S4",1));
-        sectores2.add(new Sector("S5",2));
-        sectores2.add(new Sector("S6",3));
-        sectores2.add(new Sector("S7",4));
+        A2.AgragarSector(new Sector("S4",1,A2));
+        A2.AgragarSector(new Sector("S5",2,A2));
+        A2.AgragarSector(new Sector("S6",3,A2));
+        A2.AgragarSector(new Sector("S7",4,A2));
 
-        sectores3.add(new Sector("S8",5));
-        sectores3.add(new Sector("S9",6));
-        sectores3.add(new Sector("S10",7));
+        A3.AgragarSector(new Sector("S8",5,A3));
+        A3.AgragarSector(new Sector("S9",6,A3));
+        A3.AgragarSector(new Sector("S10",7,A3));
+        
+        A4.AgragarSector(new Sector("S11",2,A4));
+        A4.AgragarSector(new Sector("S12",3,A4));
+        A4.AgragarSector(new Sector("S13",4,A4));
+        A4.AgragarSector(new Sector("S14",5,A4));
+        A4.AgragarSector(new Sector("S15",6,A4));
 
-        sectores4.add(new Sector("S11",2));
-        sectores4.add(new Sector("S12",3));
-        sectores4.add(new Sector("S13",4));
-        sectores4.add(new Sector("S14",5));
-        sectores4.add(new Sector("S15",6));
-
-        SubAreas.getAreas().add(new Area("Area 1",sectores1));
-        SubAreas.getAreas().add(new Area("Area 2",sectores2));
-        SubAreas.getAreas().add(new Area("Area 3",sectores3));
-        SubAreas.getAreas().add(new Area("Area 4",sectores4));
+        SubAreas.getAreas().add(A1);
+        SubAreas.getAreas().add(A2);
+        SubAreas.getAreas().add(A3);
+        SubAreas.getAreas().add(A4);
 
         
        
