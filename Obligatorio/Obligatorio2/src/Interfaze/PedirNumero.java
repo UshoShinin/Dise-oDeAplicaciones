@@ -130,7 +130,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    
+    @Override
     public void mostrarSectores(ArrayList<Sector> sectores) {
          comboSectores.setListData(sectores.toArray());
     }

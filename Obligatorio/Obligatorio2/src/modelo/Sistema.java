@@ -111,10 +111,16 @@ public class Sistema {
         SubAreas.getAreas().add(A4);
 
         
-       
-        Cliente c1 = new Cliente(12,"Pablo","pablitocapito1212@gmail.com");
-        SubClientes.getClientes().add(c1);
+        ConCosto tipo1 = new ConCosto();
+        Exonerado tipo2 = new Exonerado();
+        Gestor tipo3 = new Gestor();
         
+        Cliente c1 = new Cliente(12,"Pablo","pablitocapito1212@gmail.com", tipo1);
+        Cliente c2 = new Cliente(13,"Pepe","pepeelcapo@gmail.com", tipo2);
+        Cliente c3 = new Cliente(14,"Nestor","enbloque@gmail.com", tipo3);
+        SubClientes.getClientes().add(c1);
+        SubClientes.getClientes().add(c2);
+        SubClientes.getClientes().add(c3);
     }
   
 }

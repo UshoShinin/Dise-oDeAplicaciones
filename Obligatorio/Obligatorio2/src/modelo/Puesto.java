@@ -2,16 +2,15 @@ package modelo;
 
 import java.util.ArrayList;
 
-
 public class Puesto {
-    
+
     private int numPuesto;
     private Sector sector;
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
-    public Puesto(int numPuesto,Sector sector) {
+    public Puesto(int numPuesto, Sector sector) {
         this.numPuesto = numPuesto;
         this.sector = sector;
         this.trabajador = null;
@@ -19,8 +18,6 @@ public class Puesto {
         this.numerosProcesados = new ArrayList<NumeroAtencion>();
     }
 
-    
-    
     public int getNumPuesto() {
         return numPuesto;
     }
@@ -52,19 +49,22 @@ public class Puesto {
     void asignarNumero(NumeroAtencion na) {
         this.numeroActual = na;
     }
-    
-    public float tiempoPromedio(){
+
+    public float tiempoPromedio() {
         float ret = 0;
         for (NumeroAtencion np : numerosProcesados) {
             ret += np.duracionAten();
         }
-        return ret/numerosProcesados.size();
+        if (ret == 0) {
+            return ret;
+        }
+        return ret / numerosProcesados.size();
     }
 
-    public boolean disponible() {
-        if(this.trabajador == null){
+    public boolean enUso() {
+        if (this.trabajador != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -73,8 +73,5 @@ public class Puesto {
     public String toString() {
         return "Puesto: " + numPuesto;
     }
-    
-    
-    
-    
+
 }

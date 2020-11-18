@@ -25,6 +25,16 @@ public class Area {
         sectores.add(S);
         S.setArea(this);
     }
+
+    public ArrayList<Sector> conseguirSectoresValidos() {
+        ArrayList<Sector> ret = new ArrayList<>();
+        for (Sector s : sectores) {
+            if(s.tengoTrabajadores()){
+                ret.add(s);
+            }
+        }
+        return ret;
+    }
     
 }
 

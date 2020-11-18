@@ -21,7 +21,7 @@ public class ControladorPedirNumero implements Observador {
     public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v,Area A) {
         this.modelo = modelo;
         vista = v;
-        ArrayList<Sector> sectores = A.getSectores();
+        ArrayList<Sector> sectores = A.conseguirSectoresValidos();
         for(Sector S : sectores){
             S.agregar(this);
         }

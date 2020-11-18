@@ -16,6 +16,9 @@ public class Sector extends Observable{
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
 
+   
+
+
     public enum Eventos{sacaronNumero};
     
     public Sector(String nombre, int cp, Area area){
@@ -61,7 +64,7 @@ public class Sector extends Observable{
     //Devuelve el primer puesto disponible que haya
     public Puesto puestoDisponible(){
         for (Puesto puesto : puestos) {
-            if(puesto.getTrabajador()!=null &&puesto.getNumeroActual() == null){
+            if(puesto.getTrabajador()!=null && puesto.getNumeroActual() == null){
                 return puesto;
             }
         }
@@ -76,20 +79,25 @@ public class Sector extends Observable{
         if(espera == 0){
             return "Tiempo de espera: " + espera;
         }
-        String ret = "Tiempo de espera: " + String.valueOf(espera/puestosDisponibles());
+        String ret = "Tiempo de espera: " + String.valueOf(espera/puestosEnUso());
         return ret;
     }
     
-    private int puestosDisponibles(){
+    private int puestosEnUso(){
         int ret = 0;
         for (Puesto p : puestos) {
-            if(p.disponible()){
+            if(p.enUso()){
                 ret++;
             }
         }
         return ret;
     }
 
+     boolean tengoTrabajadores() {
+        return !trabajadores.isEmpty();
+    }
+    
+    
     public NumeroAtencion getUltimo() {
         return ultimo;
     }

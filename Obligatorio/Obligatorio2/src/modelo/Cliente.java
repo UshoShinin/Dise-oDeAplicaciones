@@ -4,10 +4,12 @@ package modelo;
 public class Cliente extends Persona{
     
     private String email;
+    private TipoCliente tipo;
 
-    public Cliente(int cedula, String nombreCompleto, String email) {
+    public Cliente(int cedula, String nombreCompleto, String email, TipoCliente tipo) {
         super(cedula,nombreCompleto);
         this.email = email;
+        this.tipo = tipo;
     }
 
     public String getEmail() {
@@ -19,6 +21,8 @@ public class Cliente extends Persona{
     }
     
     
-    
+    public int calcularCostoAtencion(int costoFijo, int tiempoDeEspera){
+        return tipo.calcularCosto(costoFijo, tiempoDeEspera);
+    }
     
 }
