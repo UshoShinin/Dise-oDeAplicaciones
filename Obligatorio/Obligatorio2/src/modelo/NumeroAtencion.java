@@ -15,6 +15,8 @@ public class NumeroAtencion extends Observable{
     private Trabajador trabajador;
     private Cliente cliente;
     private Sector sector;
+
+   
     
     public enum Eventos{cambioValor,reset;}
 
@@ -50,6 +52,10 @@ public class NumeroAtencion extends Observable{
     @Override
     public String toString() {
         return String.valueOf(numero);
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
     
     

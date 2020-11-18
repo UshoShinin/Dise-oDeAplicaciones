@@ -78,6 +78,13 @@ public class Puesto extends Observable{
         }
     }
 
+    public String datosParaMonitoreo(){
+        String ret = sector.getNombre() + " " + numeroActual.getValor() + " " 
+                + numeroActual.getCliente().getNombreCompleto() + " " + this.numPuesto +
+                " " + sector.Espera();
+        return ret;
+    }
+    
     @Override
     public String toString() {
         return "Puesto: " + numPuesto;

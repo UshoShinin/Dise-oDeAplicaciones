@@ -93,6 +93,17 @@ public class Sector extends Observable{
         }
         return ret;
     }
+    
+    
+    //ESTE METODO ES EL QUE TENEMOS QUE VER COMO MIERDDA HACERLO
+    public ArrayList<String> datosMonitoreo(){
+        ArrayList<String> ret = new ArrayList<>();
+        for (Puesto p : puestos) {
+            ret.add(p.datosParaMonitoreo());
+        }
+        return ret;
+    }
+    
 
      boolean tengoTrabajadores() {
         return !trabajadores.isEmpty();
@@ -124,5 +135,9 @@ public class Sector extends Observable{
     public void setArea(Area area) {
         this.area = area;
     }
+
+  
+    
+    
     
 }
