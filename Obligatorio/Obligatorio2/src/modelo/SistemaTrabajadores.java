@@ -10,9 +10,6 @@ public class SistemaTrabajadores {
    
    public SistemaTrabajadores(){
        this.trabajadores = new ArrayList<>();
-       trabajadores.add(new Trabajador(1, "1", "Pepe ElCapo", null));
-       trabajadores.add(new Trabajador(2, "2", "Nestor ElCapo", null));
-       trabajadores.add(new Trabajador(3, "3", "Guille ElCapo", null));
    }
    
    
@@ -35,5 +32,11 @@ public class SistemaTrabajadores {
         }
         return null;
     }
+
+    public ArrayList<Trabajador> getTrabajadores() {
+        return trabajadores;
+    }
+
+    
     
 }

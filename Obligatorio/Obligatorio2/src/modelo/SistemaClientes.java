@@ -9,9 +9,16 @@ public class SistemaClientes {
 
     public SistemaClientes() {
         this.clientes = new ArrayList<Cliente>();
-        Cliente c1 = new Cliente(12,"Pablo","pablitocapito1212@gmail.com");
-        clientes.add(c1);
     }
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+    
     
     
     Cliente buscarCliente(int numeroDeCliente) throws ObligatorioException {

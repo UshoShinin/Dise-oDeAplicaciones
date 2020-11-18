@@ -9,10 +9,9 @@ public class ControladorSeleccionarArea{
     private Sector S;
     private VistaSeleccionarArea vista;
 
-    public ControladorSeleccionarArea(Sistema modelo,VistaSeleccionarArea v) {
-        this.modelo = modelo;
+    public ControladorSeleccionarArea(VistaSeleccionarArea v) {
+        this.modelo = Sistema.getInstancia();
         vista = v;
-        //modelo.agregar(this);
         vista.mostrarAreas(modelo.getSubAreas().getAreas());
     }
 

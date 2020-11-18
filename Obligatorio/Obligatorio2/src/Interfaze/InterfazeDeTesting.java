@@ -18,8 +18,8 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
     private Sistema sistema;
     
     /** Creates new form InterfazeDeTesting */
-    public InterfazeDeTesting(Sistema s) {
-        sistema = s;
+    public InterfazeDeTesting() {
+        sistema = Sistema.getInstancia();
         initComponents();
     }
 
@@ -87,11 +87,11 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
 
     private void CU2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU2ActionPerformed
 
-        new CUPedirNumero(sistema).setVisible(true);
+        new CUPedirNumero().setVisible(true);
     }//GEN-LAST:event_CU2ActionPerformed
 
     private void CU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU1ActionPerformed
-       new Login(sistema).setVisible(true);
+       new Login().setVisible(true);
     }//GEN-LAST:event_CU1ActionPerformed
 
     /**
@@ -125,7 +125,7 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new InterfazeDeTesting(new Sistema()).setVisible(true);
+                new InterfazeDeTesting().setVisible(true);
             }
         });
     }

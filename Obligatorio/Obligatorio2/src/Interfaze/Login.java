@@ -23,9 +23,9 @@ public class Login extends javax.swing.JFrame implements VistaLogin {
     /**
      * Creates new form Login
      */
-    public Login(Sistema modelo) {
+    public Login() {
         initComponents();
-        this.modelo = modelo;
+        this.modelo = Sistema.getInstancia();
         this.controlador = new ControladorLogin(modelo, this);
     }
 
@@ -129,6 +129,6 @@ public class Login extends javax.swing.JFrame implements VistaLogin {
     @Override
     public void ingresar(Trabajador trabajador) {
         dispose();
-        new ElegirPuesto().setVisible(true);
+        new ElegirPuesto(trabajador).setVisible(true);
     }
 }

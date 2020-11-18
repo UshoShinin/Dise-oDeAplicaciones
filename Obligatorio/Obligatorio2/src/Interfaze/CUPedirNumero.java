@@ -25,10 +25,10 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaSelecciona
     /**
      * Creates new form SeleccionArea
      */
-    public CUPedirNumero(Sistema modelo) {
+    public CUPedirNumero() {
         initComponents();
-        con = new ControladorSeleccionarArea(modelo,this);
-        this.modelo = modelo;
+        con = new ControladorSeleccionarArea(this);
+        this.modelo = Sistema.getInstancia();
         this.areas = modelo.getSubAreas().getAreas();
         mostrarAreas(this.areas);
     }
@@ -83,7 +83,7 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaSelecciona
 
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         Area A =(Area)comboAreas.getSelectedValue();
-        new PedirNumero(modelo,A).setVisible(true);
+        new PedirNumero(A).setVisible(true);
        
     }//GEN-LAST:event_btnAreasActionPerformed
 

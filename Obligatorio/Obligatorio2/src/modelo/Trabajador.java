@@ -1,36 +1,23 @@
 package modelo;
 
 
-public class Trabajador {
+public class Trabajador extends Persona{
 
-    private int cedula;
     private String pass;
-    private String nombreCompleto;
     private Sector sector;
     
+    public Trabajador(int cedula,String pass,String nombreCompleto, Sector sector) {
+        super(cedula,nombreCompleto);
+        this.pass = pass;
+        this.sector = sector;
+    }
     
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
     public String getPass() {
         return pass;
     }
 
     public void setPass(String pass) {
         this.pass = pass;
-    }
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
     }
 
     public Sector getSector() {
@@ -41,16 +28,10 @@ public class Trabajador {
         this.sector = sector;
     }
 
-    public Trabajador(int cedula, String pass, String nombreCompleto, Sector sector) {
-        this.cedula = cedula;
-        this.pass = pass;
-        this.nombreCompleto = nombreCompleto;
-        this.sector = sector;
-    }
 
     @Override
     public String toString() {
-        return "Trabajador{" + "cedula=" + cedula + ", pass=" + pass + ", nombreCompleto=" + nombreCompleto + '}';
+        return "Trabajador{" + "cedula=" + getCedula() + ", pass=" + pass + ", nombreCompleto=" + getNombreCompleto() + '}';
     }
     
 }

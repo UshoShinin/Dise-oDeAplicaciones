@@ -24,11 +24,11 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
      */
     private ControladorPedirNumero con;
     
-    public PedirNumero(Sistema modelo,Area A) {
+    public PedirNumero(Area A) {
         initComponents();
         setLocationRelativeTo(null);
         //El sector me tiene que llegar por parametros en siguente prueb
-        con = new ControladorPedirNumero(modelo,this,A); 
+        con = new ControladorPedirNumero(Sistema.getInstancia(),this,A); 
     }
 
     /**

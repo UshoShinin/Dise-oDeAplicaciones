@@ -10,6 +10,15 @@ public class Puesto {
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
+    public Puesto(int numPuesto) {
+        this.numPuesto = numPuesto;
+        this.trabajador = null;
+        this.numeroActual = null;
+        this.numerosProcesados = new ArrayList<NumeroAtencion>();
+    }
+
+    
+    
     public int getNumPuesto() {
         return numPuesto;
     }
@@ -57,6 +66,13 @@ public class Puesto {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Puesto: " + numPuesto;
+    }
+    
+    
     
     
 }

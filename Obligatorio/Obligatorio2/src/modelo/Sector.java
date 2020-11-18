@@ -14,16 +14,19 @@ public class Sector extends Observable{
     private ArrayList<Trabajador> trabajadores;
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
-    //private int ultimoInt;
 
     public enum Eventos{sacaronNumero};
     
-    public Sector(String nombre){
+    public Sector(String nombre, int cp){
         this.nombre = nombre;
-        this.puestos = new ArrayList<>();
         this.ultimo = new NumeroAtencion();
-        //this.ultimoInt = 0;
         this.numeroPendientes = new ArrayList<NumeroAtencion>();
+        this.trabajadores = new ArrayList<Trabajador>();
+        this.puestos = new ArrayList<>();
+        for(int i= 1;i<=cp;i++){
+            this.puestos.add(new Puesto(i));
+        }
+        
     }
     
     public NumeroAtencion pedirNumero(Cliente cli) {
@@ -45,6 +48,9 @@ public class Sector extends Observable{
         return na;
     }
     
+    public void AgregarTrabajador(Trabajador T){
+        trabajadores.add(T);
+    }
     
     public void ponerNumeroPendiente(NumeroAtencion na){
         numeroPendientes.add(na);
@@ -56,7 +62,7 @@ public class Sector extends Observable{
     //Devuelve el primer puesto disponible que haya
     public Puesto puestoDisponible(){
         for (Puesto puesto : puestos) {
-            if(puesto.getNumeroActual() == null){
+            if(puesto.getTrabajador()!=null &&puesto.getNumeroActual() == null){
                 return puesto;
             }
         }
@@ -92,6 +98,10 @@ public class Sector extends Observable{
     @Override
     public String toString() {
         return nombre+ " " + Espera();
+    }
+
+    public ArrayList<Puesto> getPuestos() {
+        return puestos;
     }
     
     public int generarProximoNumero(){

@@ -52,17 +52,6 @@ public class ControladorPedirNumero implements Observador {
         }
     }
 
-//    @Override
-//    public void actualizar(Observable origen, Object evento) {
-//        if (origen == modelo){
-//            switch((NumeroAtencion.Eventos)evento){
-//                case cambioValor:
-//                    vista.mostrarContador(modelo.getValor());
-//                    break;
-//                case reset:
-//            }
-//        }    
-//    }
     @Override
     public void actualizar(Observable origen, Object evento) {
         switch ((Sector.Eventos) evento) {
