@@ -1,6 +1,8 @@
 package modelo;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import observador.Observable;
 
 public class Puesto extends Observable{
@@ -11,6 +13,13 @@ public class Puesto extends Observable{
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
+    public void TerminarAtencion(String dec) {
+        numeroActual.setDescripcion(dec);
+        numeroActual.setFechaFin(Date.from(Instant.now()));
+        numerosProcesados.add(numeroActual);
+        sector.solicitarNumero(this);
+    }
+
     public enum Eventos{NuevoCliente,Libre}
     
     public Puesto(int numPuesto, Sector sector) {
@@ -20,7 +29,7 @@ public class Puesto extends Observable{
         this.numeroActual = null;
         this.numerosProcesados = new ArrayList<NumeroAtencion>();
     }
-
+    
     public Sector getSector() {
         return sector;
     }
@@ -36,9 +45,11 @@ public class Puesto extends Observable{
     public Trabajador getTrabajador() {
         return trabajador;
     }
-
+    
     public void setTrabajador(Trabajador trabajador) {
         this.trabajador = trabajador;
+        sector.cambioTrabajador();
+        sector.solicitarNumero(this);
     }
 
     public NumeroAtencion getNumeroActual() {
@@ -54,9 +65,10 @@ public class Puesto extends Observable{
     }
 
     void asignarNumero(NumeroAtencion na) {
-        if(na==null) avisar(Eventos.Libre);
-        else avisar(Eventos.NuevoCliente);
         this.numeroActual = na;
+        if(na==null) avisar(Eventos.Libre);
+        else{avisar(Eventos.NuevoCliente);}
+        
     }
 
     public float tiempoPromedio() {

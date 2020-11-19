@@ -10,5 +10,9 @@ package Controlador;
  * @author Ivan
  */
 public interface VistaAtencionCliente {
+
+    public void estadoDesocupado();
+
+    public void estadoOcupado();
     
 }

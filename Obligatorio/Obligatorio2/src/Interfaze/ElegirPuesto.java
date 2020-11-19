@@ -77,8 +77,8 @@ public class ElegirPuesto extends javax.swing.JFrame {
 
     private void btnPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuestosActionPerformed
         Puesto P = (Puesto)comboPuestos.getSelectedValue();
-        System.out.println(P);
-        new AtenderCliente(P).setVisible(true);
+        new AtenderCliente(P,trabajador).setVisible(true);
+        
     }//GEN-LAST:event_btnPuestosActionPerformed
 
     public void mostrarPuestos(){

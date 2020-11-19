@@ -11,6 +11,8 @@ import Controlador.VistaAtencionCliente;
 import modelo.Puesto;
 import modelo.Sector;
 import modelo.Area;
+import modelo.Trabajador;
+import modelo.NumeroAtencion;
 
 /**
  *
@@ -25,23 +27,38 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     /**
      * Creates new form AtenderCliente
      */
-    public AtenderCliente(Puesto P){
+    public AtenderCliente(Puesto P,Trabajador T){
         initComponents();
         this.puesto = P;
         this.sector = puesto.getSector();
         this.area = sector.getArea();
-        this.con = new ControladorAtencion(this,P);
+        this.con = new ControladorAtencion(this,P,T);
         seteoInicial();
         
     }
     
     public void seteoInicial(){
+        this.setTitle(puesto.getTrabajador().getNombreCompleto());
         NPuesto.setText(String.valueOf(puesto.getNumPuesto()));
         NSector.setText(sector.getNombre());
         NArea.setText(area.getNombre());
+    }
+    
+    public void estadoDesocupado(){
         IAtencion.setEnabled(false);
+        description.setEnabled(false);
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
+        description.setText("");
+    }
+    
+    public void estadoOcupado(){
+        NumeroAtencion na = puesto.getNumeroActual();
+        IAtencion.setEnabled(true);
+        NumAtencion.setText(String.valueOf(na.getValor()));
+        NomCliente.setText(na.getCliente().getNombreCompleto());
+        NumFecha.setText(String.valueOf(na.getFechaSacado()));
+        
     }
 
     /**
@@ -65,10 +82,16 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         FAtencion = new javax.swing.JButton();
         FS = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        description = new javax.swing.JTextArea();
         NSector = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
+        NumAtencion = new javax.swing.JLabel();
+        LNumAtencion = new javax.swing.JLabel();
+        NomCliente = new javax.swing.JLabel();
+        LNumAtencion1 = new javax.swing.JLabel();
+        LNumAtencion2 = new javax.swing.JLabel();
+        NumFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,13 +129,18 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
 
         FAtencion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         FAtencion.setText("Finalizar atención");
+        FAtencion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FAtencionActionPerformed(evt);
+            }
+        });
 
         FS.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         FS.setText("Finalizar y salir");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        description.setColumns(20);
+        description.setRows(5);
+        jScrollPane1.setViewportView(description);
 
         NSector.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         NSector.setText("Nombre");
@@ -123,45 +151,81 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Salir.setText("Salir");
 
+        NumAtencion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        NumAtencion.setText("Vacio");
+
+        LNumAtencion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        LNumAtencion.setText("Número actual:");
+
+        NomCliente.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        NomCliente.setText("Cliente sin asignar");
+
+        LNumAtencion1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        LNumAtencion1.setText("Nombre cliente:");
+
+        LNumAtencion2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        LNumAtencion2.setText("Fecha y hora número");
+
+        NumFecha.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        NumFecha.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(NPuesto))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(NPuesto))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(CantNum))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(NArea))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(NSector))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(Tprom)))
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(498, 498, 498)
+                                .addComponent(Salir)
+                                .addGap(0, 3, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(Tprom))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(CantNum))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(NArea))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(NSector)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(IAtencion)
-                        .addGap(18, 18, 18)
-                        .addComponent(FAtencion)
-                        .addGap(18, 18, 18)
-                        .addComponent(FS)
-                        .addGap(18, 18, 18)
-                        .addComponent(Salir))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LNumAtencion)
+                                .addGap(18, 18, 18)
+                                .addComponent(NumAtencion))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LNumAtencion1)
+                                .addGap(18, 18, 18)
+                                .addComponent(NomCliente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LNumAtencion2)
+                                .addGap(18, 18, 18)
+                                .addComponent(NumFecha))
+                            .addComponent(IAtencion))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FAtencion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(FS, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,13 +234,9 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NPuesto)
-                    .addComponent(IAtencion)
-                    .addComponent(FAtencion)
-                    .addComponent(FS)
                     .addComponent(Salir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -192,16 +252,50 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(Tprom))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(Tprom)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(FAtencion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FS)
+                        .addContainerGap(150, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LNumAtencion)
+                            .addComponent(NumAtencion))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LNumAtencion1)
+                            .addComponent(NomCliente))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LNumAtencion2)
+                            .addComponent(NumFecha))
+                        .addGap(18, 18, 18)
+                        .addComponent(IAtencion)
+                        .addGap(33, 33, 33))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void IAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IAtencionActionPerformed
-        // TODO add your handling code here:
+        con.IniciarAtencion();
+        IAtencion.setEnabled(false);
+        description.setEnabled(true);
+        FAtencion.setEnabled(true);
+        FS.setEnabled(true);
+        Salir.setEnabled(false);
+        
+        
     }//GEN-LAST:event_IAtencionActionPerformed
+
+    private void FAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAtencionActionPerformed
+        con.FinalizarAtencion(description.getText());
+    }//GEN-LAST:event_FAtencionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,17 +306,23 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     private javax.swing.JButton FAtencion;
     private javax.swing.JButton FS;
     private javax.swing.JButton IAtencion;
+    private javax.swing.JLabel LNumAtencion;
+    private javax.swing.JLabel LNumAtencion1;
+    private javax.swing.JLabel LNumAtencion2;
     private javax.swing.JLabel NArea;
     public javax.swing.JLabel NPuesto;
     private javax.swing.JLabel NSector;
+    private javax.swing.JLabel NomCliente;
+    private javax.swing.JLabel NumAtencion;
+    private javax.swing.JLabel NumFecha;
     private javax.swing.JButton Salir;
     private javax.swing.JLabel Tprom;
+    private javax.swing.JTextArea description;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

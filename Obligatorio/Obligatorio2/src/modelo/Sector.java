@@ -15,8 +15,8 @@ public class Sector extends Observable{
     private ArrayList<Trabajador> trabajadores;
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
-
-    public enum Eventos{sacaronNumero};
+    
+    public enum Eventos{sacaronNumero,seMovioTrabajador};
     
     public Sector(String nombre, int cp, Area area){
         this.nombre = nombre;
@@ -50,6 +50,17 @@ public class Sector extends Observable{
         return na;
     }
     
+      void solicitarNumero(Puesto p) {
+        if(numeroPendientes.isEmpty()){
+            p.asignarNumero(null);
+        }else{
+            NumeroAtencion N = numeroPendientes.get(0);
+            numeroPendientes.remove(0);
+            p.asignarNumero(N);
+            
+        }
+    }
+    
     public void AgregarTrabajador(Trabajador T){
         trabajadores.add(T);
     }
@@ -61,7 +72,6 @@ public class Sector extends Observable{
     public String getNombre() {
         return nombre;
     }
-    
     //Devuelve el primer puesto disponible que haya
     public Puesto puestoDisponible(){
         for (Puesto puesto : puestos) {
@@ -106,9 +116,8 @@ public class Sector extends Observable{
     
 
      boolean tengoTrabajadores() {
-        return !trabajadores.isEmpty();
+        return puestosEnUso()>0;
     }
-    
     
     public NumeroAtencion getUltimo() {
         return ultimo;
@@ -134,6 +143,10 @@ public class Sector extends Observable{
 
     public void setArea(Area area) {
         this.area = area;
+    }
+    
+    public void cambioTrabajador(){
+        avisar(Eventos.seMovioTrabajador);
     }
 
   

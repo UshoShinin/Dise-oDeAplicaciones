@@ -14,18 +14,19 @@ import modelo.Sistema;
 public class ControladorPedirNumero implements Observador {
 
     private Sistema modelo;
-    private ArrayList<Sector> sectores;
+    //private ArrayList<Sector> sectores;
     private Sector S;
+    private Area A;
     private VistaPedirNumero vista;
 
     public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v,Area A) {
         this.modelo = modelo;
+        this.A = A;
         vista = v;
-        ArrayList<Sector> sectores = A.conseguirSectoresValidos();
-        for(Sector S : sectores){
+        for(Sector S : A.getSectores()){
             S.agregar(this);
         }
-        vista.mostrarSectores(sectores);
+        sectoresValidos();
     }
 
     public Sistema getModelo() {
@@ -36,6 +37,10 @@ public class ControladorPedirNumero implements Observador {
         return S;
     }
 
+    public void sectoresValidos(){
+        ArrayList<Sector> sectores = A.conseguirSectoresValidos();
+        vista.mostrarSectores(sectores);
+    }
     //me tiene que llegar un sector por parametro
     //como me llega un sector no tengo porque ir a la fachada, le pido al sector de una que me de un numero
     public void pedirNumero(Sector s, int numeroDeCliente) {
@@ -57,6 +62,9 @@ public class ControladorPedirNumero implements Observador {
         switch ((Sector.Eventos) evento) {
             case sacaronNumero:
                 vista.mostrarNumeroCliente(S.getUltimo());
+                break;
+            case seMovioTrabajador:
+                sectoresValidos();
                 break;
         }
     }
