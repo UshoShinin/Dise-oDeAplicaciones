@@ -74,8 +74,8 @@ public class Puesto extends Observable{
         
     }
     
-    public float tiempoPromedio() {
-        float ret = 0;
+    public int tiempoPromedio() {
+        int ret = 0;
         for (NumeroAtencion np : numerosProcesados) {
             ret += np.duracionAten();
         }

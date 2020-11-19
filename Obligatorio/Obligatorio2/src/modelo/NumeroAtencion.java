@@ -32,7 +32,9 @@ public class NumeroAtencion extends Observable{
     }
     
     public float duracionAten(){
-        return fechaInicio.getTime()/1000 - fechaFin.getTime()/1000;
+        return (fechaFin.getTime()/1000)-(fechaInicio.getTime()/1000);
+        
+        
     }
     
     

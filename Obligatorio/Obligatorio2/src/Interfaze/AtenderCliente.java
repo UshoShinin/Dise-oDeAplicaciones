@@ -42,6 +42,7 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         NPuesto.setText(String.valueOf(puesto.getNumPuesto()));
         NSector.setText(sector.getNombre());
         NArea.setText(area.getNombre());
+        CantNum.setText(String.valueOf(puesto.numerosProcesados()));
     }
     
     public void estadoDesocupado(){
@@ -59,6 +60,11 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         FS.setEnabled(false);
         Salir.setEnabled(true);
         description.setText("");
+        int Time = puesto.tiempoPromedio();
+        String T = String.valueOf((Time-(Time%60))/60) + ":";
+        if(Time%60<10) T+="0"+String.valueOf(Time%60);
+        else T+=String.valueOf(Time%60);
+        Tprom.setText(T);
     }
     
     public void estadoOcupado(){
