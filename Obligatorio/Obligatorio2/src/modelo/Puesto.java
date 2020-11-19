@@ -12,7 +12,7 @@ public class Puesto extends Observable{
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
-    public enum Eventos{NuevoCliente,Libre,FinAtencion}
+    public enum Eventos{NuevoCliente,Libre,FinAtencion,Trabajador}
     
     public Puesto(int numPuesto, Sector sector) {
         this.numPuesto = numPuesto;
