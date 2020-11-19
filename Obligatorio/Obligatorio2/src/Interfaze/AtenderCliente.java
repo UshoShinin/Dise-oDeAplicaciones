@@ -137,6 +137,11 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
 
         FS.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         FS.setText("Finalizar y salir");
+        FS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FSActionPerformed(evt);
+            }
+        });
 
         description.setColumns(20);
         description.setRows(5);
@@ -150,6 +155,11 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
 
         Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         NumAtencion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         NumAtencion.setText("Vacio");
@@ -296,6 +306,14 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     private void FAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FAtencionActionPerformed
         con.FinalizarAtencion(description.getText());
     }//GEN-LAST:event_FAtencionActionPerformed
+
+    private void FSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSActionPerformed
+       con.FinalizarSalir(description.getText());
+    }//GEN-LAST:event_FSActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        con.Salir();
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments

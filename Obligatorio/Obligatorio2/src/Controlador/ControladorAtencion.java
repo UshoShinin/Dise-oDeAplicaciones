@@ -20,7 +20,7 @@ public class ControladorAtencion implements Observador{
         this.vista = vista;
         this.puesto = P;
         P.agregar(this);
-        P.setTrabajador(T);
+        P.asignarTrabajador(T);
     }
 
     @Override
@@ -42,9 +42,19 @@ public class ControladorAtencion implements Observador{
     }
 
     public void FinalizarAtencion(String dec) {
-
         puesto.TerminarAtencion(dec);
     }
+
+    public void FinalizarSalir(String dec) {
+        puesto.TerminarAtencion(dec);
+        puesto.Salir();
+    }
+
+    public void Salir() {
+        puesto.Salir();
+    }
+    
+    
     
     
 }

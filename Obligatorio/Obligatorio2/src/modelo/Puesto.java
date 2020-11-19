@@ -12,14 +12,6 @@ public class Puesto extends Observable{
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
-
-    public void TerminarAtencion(String dec) {
-        numeroActual.setDescripcion(dec);
-        numeroActual.setFechaFin(Date.from(Instant.now()));
-        numerosProcesados.add(numeroActual);
-        sector.solicitarNumero(this);
-    }
-
     public enum Eventos{NuevoCliente,Libre}
     
     public Puesto(int numPuesto, Sector sector) {
@@ -48,8 +40,12 @@ public class Puesto extends Observable{
     
     public void setTrabajador(Trabajador trabajador) {
         this.trabajador = trabajador;
+    }
+    
+    public void asignarTrabajador(Trabajador trabajador){
+        setTrabajador(trabajador);
         sector.cambioTrabajador();
-        sector.solicitarNumero(this);
+        if(trabajador!=null)sector.solicitarNumero(this);
     }
 
     public NumeroAtencion getNumeroActual() {
@@ -71,6 +67,12 @@ public class Puesto extends Observable{
         
     }
 
+    public int numerosProcesados(){
+        if(numeroActual==null) return numerosProcesados.size();
+        else return numerosProcesados.size()+1;
+        
+    }
+    
     public float tiempoPromedio() {
         float ret = 0;
         for (NumeroAtencion np : numerosProcesados) {
@@ -95,6 +97,16 @@ public class Puesto extends Observable{
                 + numeroActual.getCliente().getNombreCompleto() + " " + this.numPuesto +
                 " " + sector.Espera();
         return ret;
+    }
+    
+    public void TerminarAtencion(String dec) {
+        numeroActual.setDescripcion(dec);
+        numeroActual.setFechaFin(Date.from(Instant.now()));
+        numerosProcesados.add(numeroActual);
+        sector.solicitarNumero(this);
+    }
+    public void Salir(){
+        asignarTrabajador(null);
     }
     
     @Override
