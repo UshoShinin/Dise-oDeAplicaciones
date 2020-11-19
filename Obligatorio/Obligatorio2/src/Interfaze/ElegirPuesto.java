@@ -20,6 +20,7 @@ public class ElegirPuesto extends javax.swing.JFrame {
      */
     public ElegirPuesto(Trabajador trabajador) {
         initComponents();
+        btnPuestos.setEnabled(false);
         this.trabajador = trabajador;
         mostrarPuestos();
     }
@@ -39,6 +40,11 @@ public class ElegirPuesto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        comboPuestos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                comboPuestosValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(comboPuestos);
 
         btnPuestos.setText("Seleccionar");
@@ -80,6 +86,14 @@ public class ElegirPuesto extends javax.swing.JFrame {
         new AtenderCliente(P,trabajador).setVisible(true);
         
     }//GEN-LAST:event_btnPuestosActionPerformed
+
+    private void comboPuestosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_comboPuestosValueChanged
+        if(comboPuestos.getSelectedValue() == null){
+            btnPuestos.setEnabled(false);
+        }else{
+            btnPuestos.setEnabled(true);
+        }
+    }//GEN-LAST:event_comboPuestosValueChanged
 
     public void mostrarPuestos(){
         comboPuestos.setListData(trabajador.getSector().getPuestos().toArray());

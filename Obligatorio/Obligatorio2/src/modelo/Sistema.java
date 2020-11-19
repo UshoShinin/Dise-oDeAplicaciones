@@ -72,7 +72,7 @@ public class Sistema {
         Area A3 =new Area("Area 3");
         Area A4 =new Area("Area 4");
         //PrecargaTrabajadores;
-        Sector S =new Sector("S1",3,A1);
+        Sector S =new Sector("S1",0,A1);
         Trabajador T1 = new Trabajador(1, "1", "Pepe ElCapo", S);
         Trabajador T2 = new Trabajador(2, "2", "Nestor ElCapo", S);
         Trabajador T3 = new Trabajador(3, "3", "Guille ElCapo", S);
