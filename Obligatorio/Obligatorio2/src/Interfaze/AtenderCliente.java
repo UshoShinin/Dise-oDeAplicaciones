@@ -49,16 +49,29 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         description.setEnabled(false);
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
+        Salir.setEnabled(true);
+        description.setText("");
+    }
+    
+    public void finAtencion(){
+        description.setEnabled(false);
+        FAtencion.setEnabled(false);
+        FS.setEnabled(false);
+        Salir.setEnabled(true);
         description.setText("");
     }
     
     public void estadoOcupado(){
         NumeroAtencion na = puesto.getNumeroActual();
         IAtencion.setEnabled(true);
+        description.setEnabled(false);
+        FAtencion.setEnabled(false);
+        FS.setEnabled(false);
+        description.setText("");
         NumAtencion.setText(String.valueOf(na.getValor()));
         NomCliente.setText(na.getCliente().getNombreCompleto());
         NumFecha.setText(String.valueOf(na.getFechaSacado()));
-        
+        CantNum.setText(String.valueOf(puesto.numerosProcesados()));
     }
 
     /**

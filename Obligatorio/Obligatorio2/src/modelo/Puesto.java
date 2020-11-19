@@ -12,7 +12,7 @@ public class Puesto extends Observable{
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
-    public enum Eventos{NuevoCliente,Libre,Trabajador}
+    public enum Eventos{NuevoCliente,Libre,FinAtencion}
     
     public Puesto(int numPuesto, Sector sector) {
         this.numPuesto = numPuesto;
@@ -105,6 +105,7 @@ public class Puesto extends Observable{
         numeroActual.setFechaFin(Date.from(Instant.now()));
         numerosProcesados.add(numeroActual);
         sector.solicitarNumero(this);
+        avisar(Eventos.FinAtencion);
     }
     public void Salir(){
         asignarTrabajador(null);

@@ -34,6 +34,9 @@ public class ControladorAtencion implements Observador{
                 vista.estadoOcupado();
                 Numero = puesto.getNumeroActual();
                 break;
+            case FinAtencion:
+                vista.finAtencion();
+                break;
         }
     }
 
