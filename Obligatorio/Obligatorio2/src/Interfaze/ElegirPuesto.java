@@ -5,6 +5,8 @@
  */
 package Interfaze;
 
+import Controlador.ControladorElegirPuesto;
+import Controlador.VistaElegirPuesto;
 import modelo.Puesto;
 import modelo.Trabajador;
 
@@ -12,9 +14,10 @@ import modelo.Trabajador;
  *
  * @author Intel i7
  */
-public class ElegirPuesto extends javax.swing.JFrame {
+public class ElegirPuesto extends javax.swing.JFrame implements VistaElegirPuesto{
 
     private Trabajador trabajador;
+    private ControladorElegirPuesto controlador;
     /**
      * Creates new form ElegirPuesto
      */
@@ -22,6 +25,7 @@ public class ElegirPuesto extends javax.swing.JFrame {
         initComponents();
         btnPuestos.setEnabled(false);
         this.trabajador = trabajador;
+        this.controlador = new ControladorElegirPuesto(this, trabajador.getSector());
         mostrarPuestos();
     }
 
@@ -95,8 +99,9 @@ public class ElegirPuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboPuestosValueChanged
 
+    @Override
     public void mostrarPuestos(){
-        comboPuestos.setListData(trabajador.getSector().getPuestos().toArray());
+        comboPuestos.setListData(trabajador.getSector().puestosDisponibles().toArray());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

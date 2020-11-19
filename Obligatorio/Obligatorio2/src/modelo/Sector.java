@@ -105,6 +105,16 @@ public class Sector extends Observable{
     }
     
     
+    public ArrayList<Puesto> puestosDisponibles(){
+        ArrayList<Puesto> ret = new ArrayList<>();
+        for (Puesto p : puestos) {
+            if(!p.enUso()){
+                ret.add(p);
+            }
+        }
+        return ret;
+    }
+    
     //ESTE METODO ES EL QUE TENEMOS QUE VER COMO MIERDDA HACERLO
     public ArrayList<String> datosMonitoreo(){
         ArrayList<String> ret = new ArrayList<>();
