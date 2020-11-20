@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import observador.Observable;
 
-public class Puesto extends Observable{
+public class Puesto extends Observable implements Comparable{
 
     private int numPuesto;
     private Sector sector;
     private Trabajador trabajador;
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
+
     public enum Eventos{NuevoCliente,Libre,FinAtencion,Trabajador}
     
     public Puesto(int numPuesto, Sector sector) {
@@ -108,12 +109,22 @@ public class Puesto extends Observable{
         avisar(Eventos.FinAtencion);
     }
     public void Salir(){
+        if(numeroActual!=null) sector.reingresarNumero(numeroActual);
         asignarTrabajador(null);
+        
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        Puesto P = (Puesto) o;
+        return -this.getNumeroActual().compareTo(P.getNumeroActual());
     }
     
     @Override
     public String toString() {
         return "Puesto: " + numPuesto;
     }
+    
+    
 
 }

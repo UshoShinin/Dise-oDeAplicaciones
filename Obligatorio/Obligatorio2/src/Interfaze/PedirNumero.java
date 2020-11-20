@@ -10,7 +10,6 @@ import Controlador.ControladorPedirNumero;
 import modelo.NumeroAtencion;
 import modelo.Sector;
 import modelo.Area;
-import modelo.Sistema;
 import Controlador.VistaPedirNumero;
 
 /**
@@ -28,7 +27,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         initComponents();
         setLocationRelativeTo(null);
         //El sector me tiene que llegar por parametros en siguente prueb
-        con = new ControladorPedirNumero(Sistema.getInstancia(),this,A); 
+        con = new ControladorPedirNumero(this,A); 
     }
 
     /**

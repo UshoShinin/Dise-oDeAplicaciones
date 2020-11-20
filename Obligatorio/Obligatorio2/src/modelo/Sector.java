@@ -31,7 +31,7 @@ public class Sector extends Observable{
         
     }
     
-    public NumeroAtencion pedirNumero(Cliente cli) {
+    public void pedirNumero(Cliente cli) {
         //Creo un numero de atencion nada mas con la fecha de sacado
         //Los otros datos se le agregan al momento de ser atendido
         NumeroAtencion na = new NumeroAtencion(Date.from(Instant.now()), generarProximoNumero(), cli, this);
@@ -47,9 +47,8 @@ public class Sector extends Observable{
         }
         //Le aviso a todos los observadores que sacaron un numero
         avisar(Eventos.sacaronNumero);
-        return na;
+
     }
-    
       void solicitarNumero(Puesto p) {
         if(numeroPendientes.isEmpty()){
             p.asignarNumero(null);
@@ -63,6 +62,17 @@ public class Sector extends Observable{
     
     public void AgregarTrabajador(Trabajador T){
         trabajadores.add(T);
+    }
+    
+    public void reingresarNumero(NumeroAtencion na){
+        Puesto pDisp = puestoDisponible();
+        if(pDisp == null){
+            //Si no hay ninguno lo pongo como pendiente
+            numeroPendientes.add(0,na);
+        }else{
+            //Si hay algun puesto disponible le asigno el numero
+            pDisp.asignarNumero(na);
+        }
     }
     
     public void ponerNumeroPendiente(NumeroAtencion na){

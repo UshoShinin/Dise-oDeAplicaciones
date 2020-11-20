@@ -51,6 +51,9 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
         Salir.setEnabled(true);
+        NumAtencion.setText("0");
+        NomCliente.setText("Cliente sin asignar");
+        NumFecha.setText("0");
         description.setText("");
     }
     

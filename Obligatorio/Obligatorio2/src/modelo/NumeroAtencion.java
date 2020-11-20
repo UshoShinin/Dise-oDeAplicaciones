@@ -5,7 +5,7 @@ import observador.Observable;
 
 //TENEMOS QUE REVISAR DE SI QUEREMOS QUE ESTO SEA OBSERVABLE PARA MI NO TIENE PORQUE SERLO
 
-public class NumeroAtencion extends Observable{
+public class NumeroAtencion extends Observable implements Comparable{
     
     private int numero;
     private Date fechaSacado;
@@ -16,8 +16,6 @@ public class NumeroAtencion extends Observable{
     private Cliente cliente;
     private Sector sector;
 
-   
-    
     public enum Eventos{cambioValor,reset;}
 
     public NumeroAtencion() {
@@ -33,11 +31,9 @@ public class NumeroAtencion extends Observable{
     
     public float duracionAten(){
         return (fechaFin.getTime()/1000)-(fechaInicio.getTime()/1000);
-        
-        
     }
     
-    
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters"> 
     public int getValor(){
         return numero;
     }
@@ -49,11 +45,6 @@ public class NumeroAtencion extends Observable{
     public void restar(){
         numero--;
         avisar(Eventos.cambioValor);
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(numero);
     }
 
     public Cliente getCliente() {
@@ -83,7 +74,18 @@ public class NumeroAtencion extends Observable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    // </editor-fold>
     
+    @Override
+    public int compareTo(Object o) {
+        NumeroAtencion na = (NumeroAtencion)o;
+        return this.fechaInicio.compareTo(na.fechaInicio);
+    }
+    
+    @Override
+    public String toString() {
+        return String.valueOf(numero);
+    }
     
     
     

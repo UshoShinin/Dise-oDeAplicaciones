@@ -53,6 +53,11 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
         });
 
         CU3.setText("Monitorieo");
+        CU3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CU3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,12 +92,16 @@ public class InterfazeDeTesting extends javax.swing.JFrame {
 
     private void CU2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU2ActionPerformed
 
-        new CUPedirNumero().setVisible(true);
+        new SeleccionarArea(1).setVisible(true);
     }//GEN-LAST:event_CU2ActionPerformed
 
     private void CU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU1ActionPerformed
        new Login().setVisible(true);
     }//GEN-LAST:event_CU1ActionPerformed
+
+    private void CU3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CU3ActionPerformed
+       new SeleccionarArea(2).setVisible(true);
+    }//GEN-LAST:event_CU3ActionPerformed
 
     /**
      * @param args the command line arguments

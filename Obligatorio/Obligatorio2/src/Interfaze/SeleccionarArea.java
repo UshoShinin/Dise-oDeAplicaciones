@@ -8,8 +8,6 @@ package Interfaze;
 import Controlador.ControladorSeleccionarArea;
 import java.util.ArrayList;
 import modelo.Area;
-import modelo.NumeroAtencion;
-import modelo.Sector;
 import modelo.Sistema;
 import Controlador.VistaSeleccionarArea;
 
@@ -17,7 +15,7 @@ import Controlador.VistaSeleccionarArea;
  *
  * @author Ivan
  */
-public class CUPedirNumero extends javax.swing.JFrame implements VistaSeleccionarArea {
+public class SeleccionarArea extends javax.swing.JFrame implements VistaSeleccionarArea {
 
     private ArrayList<Area> areas;
     private ControladorSeleccionarArea con;
@@ -25,12 +23,15 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaSelecciona
     /**
      * Creates new form SeleccionArea
      */
-    public CUPedirNumero() {
+    private int destino;
+    
+    public SeleccionarArea(int D) {
         initComponents();
         con = new ControladorSeleccionarArea(this);
         this.modelo = Sistema.getInstancia();
         this.areas = modelo.getSubAreas().getAreas();
         mostrarAreas(this.areas);
+        destino = D;
     }
 
     /**
@@ -83,7 +84,14 @@ public class CUPedirNumero extends javax.swing.JFrame implements VistaSelecciona
 
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         Area A =(Area)comboAreas.getSelectedValue();
-        new PedirNumero(A).setVisible(true);
+        switch(destino){
+            case 1:
+                new PedirNumero(A).setVisible(true);
+                break;
+            case 2:
+                new Monitor(A).setVisible(true);
+        }
+        
        
     }//GEN-LAST:event_btnAreasActionPerformed
 

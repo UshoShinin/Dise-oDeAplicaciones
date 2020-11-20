@@ -19,8 +19,8 @@ public class ControladorPedirNumero implements Observador {
     private Area A;
     private VistaPedirNumero vista;
 
-    public ControladorPedirNumero(Sistema modelo,VistaPedirNumero v,Area A) {
-        this.modelo = modelo;
+    public ControladorPedirNumero(VistaPedirNumero v,Area A) {
+        this.modelo = Sistema.getInstancia();
         this.A = A;
         vista = v;
         for(Sector S : A.getSectores()){
@@ -50,8 +50,7 @@ public class ControladorPedirNumero implements Observador {
             //Por ahora cuando pido un numero me terminan devolviendo ese numero
             //Capaz que no necesito estoy nada mas tengo que llamar a pedir numero
             this.S = s;
-            NumeroAtencion na = S.pedirNumero(cli);
-            
+            S.pedirNumero(cli);
         } catch (ObligatorioException ex) {
             vista.mostrarError(ex.getMessage());
         }
