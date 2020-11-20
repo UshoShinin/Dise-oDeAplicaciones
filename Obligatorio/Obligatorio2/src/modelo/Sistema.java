@@ -61,7 +61,7 @@ public class Sistema {
         return SubTrabajadores.login(user, pass);
     }
 
-    public Cliente buscarCliente(int numeroDeCliente) throws ObligatorioException {
+    public Cliente buscarCliente(String numeroDeCliente) throws ObligatorioException {
         return SubClientes.buscarCliente(numeroDeCliente);
     }
     

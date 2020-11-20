@@ -11,6 +11,7 @@ import modelo.NumeroAtencion;
 import modelo.Sector;
 import modelo.Area;
 import Controlador.VistaPedirNumero;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +27,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     public PedirNumero(Area A) {
         initComponents();
         setLocationRelativeTo(null);
+        btnSectores.setEnabled(false);
         //El sector me tiene que llegar por parametros en siguente prueb
         con = new ControladorPedirNumero(this,A); 
     }
@@ -54,6 +56,11 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
             }
         });
 
+        comboSectores.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                comboSectoresValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(comboSectores);
 
         CICliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -106,10 +113,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     private void btnSectoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSectoresActionPerformed
         Sector S =(Sector)comboSectores.getSelectedValue();
-        int CI = Integer.parseInt(CICliente.getText());
-        con.pedirNumero(S, CI);
-        
-
+        con.pedirNumero(S, CICliente.getText());
     }//GEN-LAST:event_btnSectoresActionPerformed
 
     private void CIClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIClienteActionPerformed
@@ -119,6 +123,14 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     private void MostNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MostNumActionPerformed
+
+    private void comboSectoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_comboSectoresValueChanged
+        if(comboSectores.getSelectedValue() == null){
+            btnSectores.setEnabled(false);
+        }else{
+            btnSectores.setEnabled(true);
+        }
+    }//GEN-LAST:event_comboSectoresValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -136,7 +148,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     @Override
     public void mostrarError(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(this, message);
     }
 
     @Override

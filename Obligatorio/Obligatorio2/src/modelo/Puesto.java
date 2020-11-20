@@ -119,7 +119,6 @@ public class Puesto extends Observable implements Comparable{
     public void Salir(){
         if(numeroActual!=null) sector.reingresarNumero(numeroActual);
         asignarTrabajador(null);
-        
     }
     
     @Override

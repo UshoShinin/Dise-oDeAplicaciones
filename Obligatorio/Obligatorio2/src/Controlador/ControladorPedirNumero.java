@@ -43,7 +43,7 @@ public class ControladorPedirNumero implements Observador {
     }
     //me tiene que llegar un sector por parametro
     //como me llega un sector no tengo porque ir a la fachada, le pido al sector de una que me de un numero
-    public void pedirNumero(Sector s, int numeroDeCliente) {
+    public void pedirNumero(Sector s, String numeroDeCliente) {
         try {
             //Voy a buscar al cliente, en caso de que el cliente no exista tira una exception
             Cliente cli = modelo.buscarCliente(numeroDeCliente);
