@@ -15,6 +15,7 @@ public class ControladorMonitoreo implements Observador {
     private Sistema modelo;
     private Area A;
     private VistaMonitoreo vista;
+    private ArrayList<Puesto> puestosEnUso;
 
     public ControladorMonitoreo(VistaMonitoreo v,Area A) {
         this.modelo = Sistema.getInstancia();
@@ -27,9 +28,9 @@ public class ControladorMonitoreo implements Observador {
                 P.agregar(this);
             }
         }
-        Collections.sort(puestos);
+        if(!puestos.isEmpty())Collections.sort(puestos);
         vista.mostrarPuestos(puestos);
-        
+        puestosEnUso = puestos;
     }
 
     public Sistema getModelo() {
@@ -38,11 +39,14 @@ public class ControladorMonitoreo implements Observador {
 
     @Override
     public void actualizar(Observable origen, Object evento) {
+        Puesto P =(Puesto)origen;
         switch ((Puesto.Eventos) evento) {
             case NuevoCliente:
-                
+                puestosEnUso.add(0,P);
                 break;
-
+            case FinAtencion:
+                puestosEnUso.remove(P);
         }
+        vista.mostrarPuestos(puestosEnUso);
     }
 }

@@ -67,6 +67,12 @@ public class Monitor extends javax.swing.JFrame implements VistaMonitoreo {
     
     public void mostrarPuestos(ArrayList<Puesto> puestos){
         ListPuestos.setListData(puestos.toArray());
+        String item;
+        for (Puesto p : puestos) {
+            item = p.getSector().getNombre() + " "+ p.getNumeroActual().getValor()+" "+p.getNumeroActual().getCliente().getNombreCompleto()+" "+p.getNumPuesto()+" ";//FALTA EL PROMEDIO DEL SECTOR
+            //ListPuestos.add(item);
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

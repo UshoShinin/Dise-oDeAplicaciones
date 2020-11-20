@@ -41,7 +41,7 @@ public class ControladorAtencion implements Observador{
     }
 
     public void IniciarAtencion() {
-        Numero.setFechaInicio(Date.from(Instant.now()));
+        puesto.IniciarAtencion();
     }
 
     public void FinalizarAtencion(String dec) {

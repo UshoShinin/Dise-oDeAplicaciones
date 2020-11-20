@@ -13,6 +13,8 @@ public class Puesto extends Observable implements Comparable{
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
+    
+
     public enum Eventos{NuevoCliente,Libre,FinAtencion,Trabajador}
     
     public Puesto(int numPuesto, Sector sector) {
@@ -22,7 +24,7 @@ public class Puesto extends Observable implements Comparable{
         this.numeroActual = null;
         this.numerosProcesados = new ArrayList<NumeroAtencion>();
     }
-    
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public Sector getSector() {
         return sector;
     }
@@ -43,13 +45,6 @@ public class Puesto extends Observable implements Comparable{
         this.trabajador = trabajador;
     }
     
-    public void asignarTrabajador(Trabajador trabajador){
-        setTrabajador(trabajador);
-        sector.cambioTrabajador();
-        avisar(Eventos.Trabajador);
-        if(trabajador!=null)sector.solicitarNumero(this);
-    }
-
     public NumeroAtencion getNumeroActual() {
         return numeroActual;
     }
@@ -60,6 +55,14 @@ public class Puesto extends Observable implements Comparable{
 
     public void setNumerosProcesados(ArrayList<NumeroAtencion> numerosProcesados) {
         this.numerosProcesados = numerosProcesados;
+    }
+    // </editor-fold>
+    
+    public void asignarTrabajador(Trabajador trabajador){
+        setTrabajador(trabajador);
+        sector.cambioTrabajador();
+        avisar(Eventos.Trabajador);
+        if(trabajador!=null)sector.solicitarNumero(this);
     }
 
     void asignarNumero(NumeroAtencion na) {
@@ -101,12 +104,17 @@ public class Puesto extends Observable implements Comparable{
         return ret;
     }
     
+    public void IniciarAtencion() {
+        numeroActual.setFechaInicio(Date.from(Instant.now()));
+    }
+    
     public void TerminarAtencion(String dec) {
         numeroActual.setDescripcion(dec);
         numeroActual.setFechaFin(Date.from(Instant.now()));
         numerosProcesados.add(numeroActual);
-        sector.solicitarNumero(this);
         avisar(Eventos.FinAtencion);
+        sector.solicitarNumero(this);
+        
     }
     public void Salir(){
         if(numeroActual!=null) sector.reingresarNumero(numeroActual);
