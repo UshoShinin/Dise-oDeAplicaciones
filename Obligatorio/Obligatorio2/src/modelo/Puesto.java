@@ -64,7 +64,10 @@ public class Puesto extends Observable implements Comparable{
         if(trabajador != null){
             if(trabajador.getPuesto() != null) throw new ObligatorioException("El trabajador ya esta en un puesto");
             trabajador.setPuesto(this);
-        } 
+        } else{
+            
+        }
+        System.out.println("Trabajador "+ trabajador);
         setTrabajador(trabajador);
         sector.cambioTrabajador();
         avisar(Eventos.Trabajador);
@@ -126,6 +129,7 @@ public class Puesto extends Observable implements Comparable{
     public void Salir(){
         if(numeroActual!=null) sector.reingresarNumero(numeroActual);
         try {
+            this.trabajador.salir();
             asignarTrabajador(null);
         } catch (ObligatorioException ex) {
         }

@@ -50,7 +50,8 @@ public class ControladorPedirNumero implements Observador {
             //Por ahora cuando pido un numero me terminan devolviendo ese numero
             //Capaz que no necesito estoy nada mas tengo que llamar a pedir numero
             this.S = s;
-            S.pedirNumero(cli);
+            NumeroAtencion na = S.pedirNumero(cli);
+            vista.mostrarNumeroAtencion(na);
         } catch (ObligatorioException ex) {
             vista.mostrarError(ex.getMessage());
         }

@@ -43,5 +43,9 @@ public class Trabajador extends Persona{
     public String toString() {
         return "Trabajador{" + "cedula=" + getCedula() + ", pass=" + pass + ", nombreCompleto=" + getNombreCompleto() + '}';
     }
+
+    void salir() {
+        setPuesto(null);
+    }
     
 }

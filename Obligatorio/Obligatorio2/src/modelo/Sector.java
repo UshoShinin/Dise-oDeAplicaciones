@@ -31,7 +31,7 @@ public class Sector extends Observable{
         
     }
     
-    public void pedirNumero(Cliente cli) throws ObligatorioException {
+    public NumeroAtencion pedirNumero(Cliente cli) throws ObligatorioException {
         //Creo un numero de atencion nada mas con la fecha de sacado
         //Los otros datos se le agregan al momento de ser atendido
         NumeroAtencion na = new NumeroAtencion(Date.from(Instant.now()), generarProximoNumero(), cli, this);
@@ -47,7 +47,7 @@ public class Sector extends Observable{
         }
         //Le aviso a todos los observadores que sacaron un numero
         avisar(Eventos.sacaronNumero);
-
+        return na;
     }
     
     
