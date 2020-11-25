@@ -28,7 +28,6 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         initComponents();
         setLocationRelativeTo(null);
         btnSectores.setEnabled(false);
-        //El sector me tiene que llegar por parametros en siguente prueb
         con = new ControladorPedirNumero(this,A); 
     }
 
@@ -143,6 +142,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     @Override
     public void mostrarSectores(ArrayList<Sector> sectores) {
+        
          comboSectores.setListData(sectores.toArray());
     }
 

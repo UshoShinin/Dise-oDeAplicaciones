@@ -16,7 +16,7 @@ public class Sector extends Observable{
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
     
-    public enum Eventos{sacaronNumero,seMovioTrabajador};
+    public enum Eventos{sacaronNumero,seMovioTrabajador,nuevoPromedio};
     
     public Sector(String nombre, int cp, Area area){
         this.nombre = nombre;
@@ -58,8 +58,8 @@ public class Sector extends Observable{
             NumeroAtencion N = numeroPendientes.get(0);
             numeroPendientes.remove(0);
             p.asignarNumero(N);
-            
         }
+        avisar(Eventos.nuevoPromedio);
     }
     
     public void AgregarTrabajador(Trabajador T){
@@ -145,11 +145,6 @@ public class Sector extends Observable{
         return ultimo;
     }
 
-    @Override
-    public String toString() {
-        return nombre+ " " + Espera();
-    }
-
     public ArrayList<Puesto> getPuestos() {
         return puestos;
     }
@@ -171,6 +166,10 @@ public class Sector extends Observable{
         avisar(Eventos.seMovioTrabajador);
     }
 
+    @Override
+    public String toString() {
+        return nombre+ " " + Espera();
+    }
   
     
     

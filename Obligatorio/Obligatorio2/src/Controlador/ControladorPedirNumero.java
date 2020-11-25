@@ -65,6 +65,10 @@ public class ControladorPedirNumero implements Observador {
             case seMovioTrabajador:
                 sectoresValidos();
                 break;
+            case nuevoPromedio:
+                vista.mostrarSectores(A.conseguirSectoresValidos());
+                break;
+                        
         }
     }
 }
