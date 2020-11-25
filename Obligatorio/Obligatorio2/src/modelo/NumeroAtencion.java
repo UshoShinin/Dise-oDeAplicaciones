@@ -74,6 +74,17 @@ public class NumeroAtencion extends Observable implements Comparable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+    
+    
+    
     // </editor-fold>
     
     @Override

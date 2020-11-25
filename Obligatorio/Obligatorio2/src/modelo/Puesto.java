@@ -112,6 +112,7 @@ public class Puesto extends Observable implements Comparable{
         numeroActual.setDescripcion(dec);
         numeroActual.setFechaFin(Date.from(Instant.now()));
         numerosProcesados.add(numeroActual);
+        numeroActual.setTrabajador(trabajador);
         avisar(Eventos.FinAtencion);
         sector.solicitarNumero(this);
         
