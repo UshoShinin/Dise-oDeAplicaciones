@@ -16,6 +16,8 @@ public class NumeroAtencion extends Observable implements Comparable{
     private Cliente cliente;
     private Sector sector;
 
+    
+
     public enum Eventos{cambioValor,reset;}
 
     public NumeroAtencion() {
@@ -98,7 +100,10 @@ public class NumeroAtencion extends Observable implements Comparable{
         return String.valueOf(numero);
     }
     
-    
+    public String mostrarmeAlSalir() {
+        String ret = "Numero: " + numero + " Cliente: " + cliente.getNombreCompleto() + " " + fechaSacado + " " + sector.getNombre();
+        return ret;
+    }
     
     
 }

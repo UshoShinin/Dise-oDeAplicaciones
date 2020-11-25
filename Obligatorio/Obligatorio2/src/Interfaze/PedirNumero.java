@@ -158,7 +158,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     @Override
     public void mostrarNumeroAtencion(NumeroAtencion na) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(this, na.mostrarmeAlSalir());
     }
 
 }
