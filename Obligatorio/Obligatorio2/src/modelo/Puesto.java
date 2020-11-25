@@ -3,6 +3,8 @@ package modelo;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import observador.Observable;
 
 public class Puesto extends Observable implements Comparable{
@@ -58,7 +60,11 @@ public class Puesto extends Observable implements Comparable{
     }
     // </editor-fold>
     
-    public void asignarTrabajador(Trabajador trabajador){
+    public void asignarTrabajador(Trabajador trabajador) throws ObligatorioException{
+        if(trabajador != null){
+            if(trabajador.getPuesto() != null) throw new ObligatorioException("El trabajador ya esta en un puesto");
+            trabajador.setPuesto(this);
+        } 
         setTrabajador(trabajador);
         sector.cambioTrabajador();
         avisar(Eventos.Trabajador);
@@ -119,7 +125,10 @@ public class Puesto extends Observable implements Comparable{
     }
     public void Salir(){
         if(numeroActual!=null) sector.reingresarNumero(numeroActual);
-        asignarTrabajador(null);
+        try {
+            asignarTrabajador(null);
+        } catch (ObligatorioException ex) {
+        }
     }
     
     @Override

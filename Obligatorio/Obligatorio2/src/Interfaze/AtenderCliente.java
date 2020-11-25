@@ -8,6 +8,7 @@ package Interfaze;
 
 import Controlador.ControladorAtencion;
 import Controlador.VistaAtencionCliente;
+import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Sector;
 import modelo.Area;
@@ -367,4 +368,9 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarError(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
 }

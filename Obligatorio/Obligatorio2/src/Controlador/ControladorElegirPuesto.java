@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.ObligatorioException;
 import modelo.Puesto;
 import modelo.Sector;
+import modelo.Trabajador;
 import observador.Observable;
 import observador.Observador;
 
@@ -32,6 +36,15 @@ public class ControladorElegirPuesto implements Observador{
             case Trabajador:
                 vista.mostrarPuestos();
                 break;
+        }
+    }
+
+    public void asignarTrabajadorAlPuesto(Puesto P, Trabajador T) {
+        try {
+            P.asignarTrabajador(T);
+            vista.crearVentanaAtencion(P);
+        } catch (ObligatorioException ex) {
+            vista.mostrarError(ex.getMessage());
         }
     }
     

@@ -5,6 +5,7 @@ public class Trabajador extends Persona{
 
     private String pass;
     private Sector sector;
+    private Puesto puesto;
     
     public Trabajador(int cedula,String pass,String nombreCompleto, Sector sector) {
         super(cedula,nombreCompleto);
@@ -28,6 +29,15 @@ public class Trabajador extends Persona{
         this.sector = sector;
     }
 
+    public Puesto getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+    }
+
+    
 
     @Override
     public String toString() {

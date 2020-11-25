@@ -4,6 +4,8 @@ package Controlador;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.NumeroAtencion;
 import modelo.ObligatorioException;
 import modelo.Puesto;
@@ -19,7 +21,6 @@ public class ControladorAtencion implements Observador{
         this.vista = vista;
         this.puesto = P;
         P.agregar(this);
-        P.asignarTrabajador(T);
     }
 
     @Override

@@ -16,5 +16,7 @@ public interface VistaAtencionCliente {
     public void estadoOcupado();
 
     public void finAtencion();
+
+    public void mostrarError(String message);
     
 }

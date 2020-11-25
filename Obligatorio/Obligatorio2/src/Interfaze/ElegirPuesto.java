@@ -7,6 +7,7 @@ package Interfaze;
 
 import Controlador.ControladorElegirPuesto;
 import Controlador.VistaElegirPuesto;
+import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Trabajador;
 
@@ -87,8 +88,7 @@ public class ElegirPuesto extends javax.swing.JFrame implements VistaElegirPuest
 
     private void btnPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuestosActionPerformed
         Puesto P = (Puesto)comboPuestos.getSelectedValue();
-        new AtenderCliente(P,trabajador).setVisible(true);
-        
+        controlador.asignarTrabajadorAlPuesto(P, trabajador); 
     }//GEN-LAST:event_btnPuestosActionPerformed
 
     private void comboPuestosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_comboPuestosValueChanged
@@ -109,4 +109,14 @@ public class ElegirPuesto extends javax.swing.JFrame implements VistaElegirPuest
     private javax.swing.JList comboPuestos;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarError(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    @Override
+    public void crearVentanaAtencion(Puesto p) {
+        new AtenderCliente(p,trabajador).setVisible(true);  
+    }
 }

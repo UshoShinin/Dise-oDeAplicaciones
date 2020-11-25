@@ -5,6 +5,9 @@
  */
 package Controlador;
 
+import modelo.Puesto;
+import modelo.Trabajador;
+
 /**
  *
  * @author Intel i7
@@ -12,5 +15,9 @@ package Controlador;
 public interface VistaElegirPuesto {
 
     public void mostrarPuestos();
+
+    public void mostrarError(String message);
+
+    public void crearVentanaAtencion(Puesto p);
     
 }
