@@ -14,7 +14,6 @@ import modelo.Sistema;
 public class ControladorPedirNumero implements Observador {
 
     private Sistema modelo;
-    //private ArrayList<Sector> sectores;
     private Sector S;
     private Area A;
     private VistaPedirNumero vista;
@@ -60,13 +59,14 @@ public class ControladorPedirNumero implements Observador {
     @Override
     public void actualizar(Observable origen, Object evento) {
         switch ((Sector.Eventos) evento) {
-            case sacaronNumero:
-                vista.mostrarNumeroCliente(S.getUltimo());
-                break;
             case seMovioTrabajador:
                 sectoresValidos();
                 break;
             case nuevoPromedio:
+                vista.mostrarSectores(A.conseguirSectoresValidos());
+                break;
+                
+            case sacaronNumero:
                 vista.mostrarSectores(A.conseguirSectoresValidos());
                 break;
                         

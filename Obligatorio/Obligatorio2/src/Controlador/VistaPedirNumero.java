@@ -15,7 +15,6 @@ import modelo.Sector;
  */
 public interface VistaPedirNumero {
     public void mostrarError(String message);
-    public void mostrarNumeroCliente(NumeroAtencion N);
     public void mostrarSectores(ArrayList<Sector> sectores);
     public void mostrarNumeroAtencion(NumeroAtencion na);
 }

@@ -95,15 +95,22 @@ public class Sector extends Observable{
     }
     
     public String Espera(){
-        float espera = 0;
+        int espera;
+        int PP = 0; //Promedio de puestos
+        String Spera = "";
         for (Puesto p : puestos) {
-            espera += p.tiempoPromedio();
+            PP += p.tiempoPromedio();
         }
-        if(espera == 0){
-            return "Tiempo de espera: " + espera;
+        if(PP == 0){
+            Spera = "0:00";
+        }else{
+            espera =(PP/puestosEnUso())*numeroPendientes.size();
+            int seg = espera%60;
+            Spera = String.valueOf((espera-(seg))/60)+":";
+            if(seg<10)Spera += "0";
+            Spera += String.valueOf(seg);
         }
-        String ret = "Tiempo de espera: " + String.valueOf(espera/puestosEnUso());
-        return ret;
+        return "Tiempo de espera: " + Spera;
     }
     
     private int puestosEnUso(){

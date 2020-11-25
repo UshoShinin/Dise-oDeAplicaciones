@@ -44,7 +44,6 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         jScrollPane1 = new javax.swing.JScrollPane();
         comboSectores = new javax.swing.JList();
         CICliente = new javax.swing.JTextField();
-        MostNum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,14 +68,6 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
             }
         });
 
-        MostNum.setEditable(false);
-        MostNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        MostNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostNumActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,8 +78,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSectores, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                    .addComponent(CICliente)
-                    .addComponent(MostNum))
+                    .addComponent(CICliente))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,11 +90,9 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
                         .addGap(8, 8, 8)
                         .addComponent(CICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSectores)
-                        .addGap(70, 70, 70)
-                        .addComponent(MostNum, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSectores))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,10 +107,6 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         // TODO add your handling code here:
     }//GEN-LAST:event_CIClienteActionPerformed
 
-    private void MostNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MostNumActionPerformed
-
     private void comboSectoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_comboSectoresValueChanged
         if(comboSectores.getSelectedValue() == null){
             btnSectores.setEnabled(false);
@@ -134,7 +118,6 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CICliente;
-    private javax.swing.JTextField MostNum;
     private javax.swing.JButton btnSectores;
     private javax.swing.JList comboSectores;
     private javax.swing.JScrollPane jScrollPane1;
@@ -142,18 +125,12 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
 
     @Override
     public void mostrarSectores(ArrayList<Sector> sectores) {
-        
          comboSectores.setListData(sectores.toArray());
     }
 
     @Override
     public void mostrarError(String message) {
         JOptionPane.showMessageDialog(this, message);
-    }
-
-    @Override
-    public void mostrarNumeroCliente(NumeroAtencion N) {
-        MostNum.setText(String.valueOf(N.getValor()));
     }
 
     @Override
