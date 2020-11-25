@@ -57,8 +57,6 @@ public class Login extends javax.swing.JFrame implements VistaLogin {
             }
         });
 
-        txtPass.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
