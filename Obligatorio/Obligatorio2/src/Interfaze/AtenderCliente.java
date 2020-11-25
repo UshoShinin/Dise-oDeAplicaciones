@@ -44,6 +44,10 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         NSector.setText(sector.getNombre());
         NArea.setText(area.getNombre());
         CantNum.setText(String.valueOf(puesto.numerosProcesados()));
+        IAtencion.setEnabled(false);
+        description.setEnabled(false);
+        FAtencion.setEnabled(false);
+        FS.setEnabled(false);
     }
     
     public void estadoDesocupado(){

@@ -67,7 +67,6 @@ public class Puesto extends Observable implements Comparable{
         } else{
             
         }
-        System.out.println("Trabajador "+ trabajador);
         setTrabajador(trabajador);
         sector.cambioTrabajador();
         avisar(Eventos.Trabajador);
