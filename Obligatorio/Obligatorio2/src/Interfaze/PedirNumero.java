@@ -47,7 +47,7 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
         CICliente = new javax.swing.JTextField();
         MostNum = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnSectores.setText("Pedir número");
         btnSectores.addActionListener(new java.awt.event.ActionListener() {

@@ -14,7 +14,6 @@ public class ControladorAtencion implements Observador{
     
     private VistaAtencionCliente vista;
     private Puesto puesto;
-    private NumeroAtencion Numero;
 
     public ControladorAtencion(VistaAtencionCliente vista,Puesto P,Trabajador T) {
         this.vista = vista;
@@ -28,11 +27,9 @@ public class ControladorAtencion implements Observador{
         switch((Puesto.Eventos)evento){
             case Libre:
                 vista.estadoDesocupado();
-                Numero = null;
                 break;
             case NuevoCliente:
                 vista.estadoOcupado();
-                Numero = puesto.getNumeroActual();
                 break;
             case FinAtencion:
                 vista.finAtencion();

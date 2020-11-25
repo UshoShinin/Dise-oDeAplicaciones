@@ -39,7 +39,7 @@ public class Monitor extends javax.swing.JFrame implements VistaMonitoreo {
         jScrollPane1 = new javax.swing.JScrollPane();
         ListPuestos = new javax.swing.JList();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         ListPuestos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jScrollPane1.setViewportView(ListPuestos);

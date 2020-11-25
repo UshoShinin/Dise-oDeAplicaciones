@@ -61,7 +61,6 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         description.setEnabled(false);
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
-        Salir.setEnabled(true);
         description.setText("");
         int Time = puesto.tiempoPromedio();
         String T = String.valueOf((Time-(Time%60))/60) + ":";
@@ -76,6 +75,7 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         description.setEnabled(false);
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
+        Salir.setEnabled(false);
         description.setText("");
         NumAtencion.setText(String.valueOf(na.getValor()));
         NomCliente.setText(na.getCliente().getNombreCompleto());
@@ -115,7 +115,7 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         LNumAtencion2 = new javax.swing.JLabel();
         NumFecha = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Área");
@@ -331,10 +331,12 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
 
     private void FSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSActionPerformed
        con.FinalizarSalir(description.getText());
+       dispose();
     }//GEN-LAST:event_FSActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         con.Salir();
+        dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
     /**

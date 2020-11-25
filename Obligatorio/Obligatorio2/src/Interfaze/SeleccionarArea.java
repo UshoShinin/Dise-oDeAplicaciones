@@ -47,7 +47,7 @@ public class SeleccionarArea extends javax.swing.JFrame implements VistaSeleccio
         jScrollPane1 = new javax.swing.JScrollPane();
         comboAreas = new javax.swing.JList();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnAreas.setText("Seleccionar");
         btnAreas.addActionListener(new java.awt.event.ActionListener() {

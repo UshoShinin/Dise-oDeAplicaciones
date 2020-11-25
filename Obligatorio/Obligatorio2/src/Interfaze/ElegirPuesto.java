@@ -42,7 +42,7 @@ public class ElegirPuesto extends javax.swing.JFrame implements VistaElegirPuest
         comboPuestos = new javax.swing.JList();
         btnPuestos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         comboPuestos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
