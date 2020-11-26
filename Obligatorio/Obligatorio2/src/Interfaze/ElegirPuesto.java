@@ -119,4 +119,10 @@ public class ElegirPuesto extends javax.swing.JFrame implements VistaElegirPuest
     public void crearVentanaAtencion(Puesto p) {
         new AtenderCliente(p,trabajador).setVisible(true);  
     }
+    @Override
+    public void dispose(){
+        this.setVisible(false);
+        controlador.salir();
+    }
+    
 }

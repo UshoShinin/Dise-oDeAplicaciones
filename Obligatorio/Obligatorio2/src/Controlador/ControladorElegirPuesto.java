@@ -21,9 +21,11 @@ import observador.Observador;
 public class ControladorElegirPuesto implements Observador{
 
     private VistaElegirPuesto vista;
+    private Sector sector;
 
     public ControladorElegirPuesto(VistaElegirPuesto vista, Sector s) {
         this.vista = vista;
+        this.sector =s;
         for (Puesto p : s.getPuestos()) {
             p.agregar(this);
         }
@@ -45,6 +47,12 @@ public class ControladorElegirPuesto implements Observador{
             vista.crearVentanaAtencion(P);
         } catch (ObligatorioException ex) {
             vista.mostrarError(ex.getMessage());
+        }
+    }
+
+    public void salir() {
+        for (Puesto p : sector.getPuestos()) {
+            p.quitar(this);
         }
     }
     

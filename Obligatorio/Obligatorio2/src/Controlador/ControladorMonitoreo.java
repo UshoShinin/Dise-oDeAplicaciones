@@ -53,4 +53,10 @@ public class ControladorMonitoreo implements Observador {
         }
         vista.mostrarPuestos(puestosEnUso);
     }
+
+    public void salir() {
+        for(Sector S : A.getSectores()){
+            S.quitar(this);
+        }
+    }
 }

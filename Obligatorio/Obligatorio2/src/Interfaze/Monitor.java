@@ -75,6 +75,12 @@ public class Monitor extends javax.swing.JFrame implements VistaMonitoreo {
         }
         ListPuestos.setListData(listado.toArray());
     }
+    
+    @Override
+    public void dispose(){
+        this.setVisible(false);
+        con.salir();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList ListPuestos;

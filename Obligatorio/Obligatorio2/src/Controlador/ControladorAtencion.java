@@ -54,7 +54,9 @@ public class ControladorAtencion implements Observador{
     }
 
     public void Salir() {
+        puesto.quitar(this);
         puesto.Salir();
+        
     }
     
     

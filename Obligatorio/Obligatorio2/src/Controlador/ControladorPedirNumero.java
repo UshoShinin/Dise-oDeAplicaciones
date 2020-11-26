@@ -69,4 +69,10 @@ public class ControladorPedirNumero implements Observador {
                         
         }
     }
+
+    public void salir() {
+        for(Sector S : A.getSectores()){
+            S.quitar(this);
+        }
+    }
 }

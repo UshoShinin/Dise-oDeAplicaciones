@@ -137,5 +137,11 @@ public class PedirNumero extends javax.swing.JFrame implements VistaPedirNumero 
     public void mostrarNumeroAtencion(NumeroAtencion na) {
         JOptionPane.showMessageDialog(this, na.mostrarmeAlSalir());
     }
+    
+    @Override
+    public void dispose(){
+        this.setVisible(false);
+        con.salir();
+    }
 
 }
