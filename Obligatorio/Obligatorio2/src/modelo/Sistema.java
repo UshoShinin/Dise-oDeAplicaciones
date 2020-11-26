@@ -17,7 +17,9 @@ public class Sistema {
     private SistemaClientes SubClientes;
     private SistemaTrabajadores SubTrabajadores;
     private static boolean DatosCargados;
-
+    private int costoFijo;
+    
+    
     private Sistema() {
         this.SubAreas = new SistemaAreas();
         this.SubClientes = new SistemaClientes();
@@ -54,7 +56,9 @@ public class Sistema {
         this.SubTrabajadores = SubTrabajadores;
     }
 
-    
+    public int getCostoFijo() {
+        return costoFijo;
+    }
     //Abajo de aca voy dejando los metodos que vamos a tener que implementar
     
     public Trabajador loginTrabajador(String user, String pass) throws ObligatorioException {
@@ -66,6 +70,7 @@ public class Sistema {
     }
     
     private void CargaDeDatos(){
+        costoFijo = 40;
         DatosCargados=true;
         Area A1 =new Area("Area 1");
         Area A2 =new Area("Area 2");

@@ -13,7 +13,7 @@ public class Exonerado extends TipoCliente{
 
     @Override
     public int calcularCosto(int costoFijo, int tiempoDeEspera) {
-        return -1;
+        return 0;
     }
     
 }

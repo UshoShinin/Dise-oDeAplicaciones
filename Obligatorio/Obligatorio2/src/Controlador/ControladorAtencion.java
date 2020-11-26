@@ -25,6 +25,7 @@ public class ControladorAtencion implements Observador{
 
     @Override
     public void actualizar(Observable origen, Object evento) {
+        Puesto P = (Puesto) origen;
         switch((Puesto.Eventos)evento){
             case Libre:
                 vista.estadoDesocupado();
@@ -34,6 +35,7 @@ public class ControladorAtencion implements Observador{
                 break;
             case FinAtencion:
                 vista.finAtencion();
+                vista.mostrarMensaje("El costo de la atención es: "+P.getNumeroActual().getCosto());
                 break;
         }
     }

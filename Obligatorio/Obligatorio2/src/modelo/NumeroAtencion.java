@@ -15,8 +15,7 @@ public class NumeroAtencion extends Observable implements Comparable{
     private Trabajador trabajador;
     private Cliente cliente;
     private Sector sector;
-
-    
+    private int costo;
 
     public enum Eventos{cambioValor,reset;}
 
@@ -33,6 +32,10 @@ public class NumeroAtencion extends Observable implements Comparable{
     
     public float duracionAten(){
         return (fechaFin.getTime()/1000)-(fechaInicio.getTime()/1000);
+    }
+    
+    public int esperaAtencion(){
+        return (int) ((fechaFin.getTime()/1000)-(fechaInicio.getTime()/1000));
     }
     
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters"> 
@@ -83,6 +86,14 @@ public class NumeroAtencion extends Observable implements Comparable{
 
     public void setTrabajador(Trabajador trabajador) {
         this.trabajador = trabajador;
+    }  
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
     }
     
     

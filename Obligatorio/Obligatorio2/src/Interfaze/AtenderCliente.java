@@ -8,6 +8,7 @@ package Interfaze;
 
 import Controlador.ControladorAtencion;
 import Controlador.VistaAtencionCliente;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Sector;
@@ -56,6 +57,7 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
         Salir.setEnabled(true);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         NumAtencion.setText("0");
         NomCliente.setText("Cliente sin asignar");
         NumFecha.setText("0");
@@ -81,6 +83,7 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
         FAtencion.setEnabled(false);
         FS.setEnabled(false);
         Salir.setEnabled(false);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         description.setText("");
         NumAtencion.setText(String.valueOf(na.getValor()));
         NomCliente.setText(na.getCliente().getNombreCompleto());
@@ -340,7 +343,6 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     }//GEN-LAST:event_FSActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        con.Salir();
         dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
@@ -374,7 +376,13 @@ public class AtenderCliente extends javax.swing.JFrame implements VistaAtencionC
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void mostrarError(String message) {
+    public void mostrarMensaje(String message) {
         JOptionPane.showMessageDialog(this, message);
+    }
+    
+    @Override
+    public void dispose() {
+        this.setVisible(false);
+        con.Salir();
     }
 }

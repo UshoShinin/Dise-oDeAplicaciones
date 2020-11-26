@@ -15,8 +15,6 @@ public class Puesto extends Observable implements Comparable{
     private NumeroAtencion numeroActual;
     private ArrayList<NumeroAtencion> numerosProcesados;
 
-    
-
     public enum Eventos{NuevoCliente,Libre,FinAtencion,Trabajador}
     
     public Puesto(int numPuesto, Sector sector) {
@@ -122,6 +120,7 @@ public class Puesto extends Observable implements Comparable{
         numeroActual.setFechaFin(Date.from(Instant.now()));
         numerosProcesados.add(numeroActual);
         numeroActual.setTrabajador(trabajador);
+        numeroActual.setCosto(numeroActual.getCliente().calcularCostoAtencion(Sistema.getInstancia().getCostoFijo(),numeroActual.esperaAtencion()));
         avisar(Eventos.FinAtencion);
         sector.FinAtencion(this);
         sector.solicitarNumero(this);
