@@ -23,9 +23,9 @@ public class ControladorMonitoreo implements Observador {
         vista = v;
         ArrayList<Puesto> puestos = new ArrayList<Puesto>();
         for(Sector S : A.getSectores()){
+            S.agregar(this);
             for(Puesto P : S.getPuestos()){
                 if(P.getNumeroActual()!=null) puestos.add(P);
-                P.agregar(this);
             }
         }
         if(!puestos.isEmpty())Collections.sort(puestos);
@@ -39,13 +39,17 @@ public class ControladorMonitoreo implements Observador {
 
     @Override
     public void actualizar(Observable origen, Object evento) {
-        Puesto P =(Puesto)origen;
-        switch ((Puesto.Eventos) evento) {
+        Sector S =(Sector)origen;
+        switch ((Sector.Eventos) evento) {
             case NuevoCliente:
-                puestosEnUso.add(0,P);
+                puestosEnUso.add(0,S.getUltimoPuesto());
                 break;
             case FinAtencion:
-                puestosEnUso.remove(P);
+                puestosEnUso.remove(S.getUltimoPuesto());
+                break;
+            case sacaronNumero:
+                
+            
         }
         vista.mostrarPuestos(puestosEnUso);
     }

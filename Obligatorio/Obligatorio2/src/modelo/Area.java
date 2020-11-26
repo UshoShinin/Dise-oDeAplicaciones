@@ -25,8 +25,6 @@ public class Area {
         return nombre;
     }
     
-    
-    
     public void AgragarSector(Sector S){
         sectores.add(S);
         S.setArea(this);

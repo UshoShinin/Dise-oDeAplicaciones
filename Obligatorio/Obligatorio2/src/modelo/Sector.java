@@ -15,8 +15,10 @@ public class Sector extends Observable{
     private ArrayList<Trabajador> trabajadores;
     private ArrayList<NumeroAtencion> numeroPendientes;
     private NumeroAtencion ultimo;
+    private Puesto ultimoPuesto;
     
-    public enum Eventos{sacaronNumero,seMovioTrabajador,nuevoPromedio};
+    
+    public enum Eventos{sacaronNumero,seMovioTrabajador,nuevoPromedio,NuevoCliente,FinAtencion};
     
     public Sector(String nombre, int cp, Area area){
         this.nombre = nombre;
@@ -28,7 +30,6 @@ public class Sector extends Observable{
         for(int i= 1;i<=cp;i++){
             this.puestos.add(new Puesto(i,this));
         }
-        
     }
     
     public NumeroAtencion pedirNumero(Cliente cli) throws ObligatorioException {
@@ -64,17 +65,6 @@ public class Sector extends Observable{
     
     public void AgregarTrabajador(Trabajador T){
         trabajadores.add(T);
-    }
-    
-    public void reingresarNumero(NumeroAtencion na){
-        Puesto pDisp = puestoDisponible();
-        if(pDisp == null){
-            //Si no hay ninguno lo pongo como pendiente
-            numeroPendientes.add(0,na);
-        }else{
-            //Si hay algun puesto disponible le asigno el numero
-            pDisp.asignarNumero(na);
-        }
     }
     
     public void ponerNumeroPendiente(NumeroAtencion na){
@@ -142,7 +132,6 @@ public class Sector extends Observable{
         }
         return ret;
     }
-    
 
      boolean tengoTrabajadores() {
         return puestosEnUso()>0;
@@ -173,6 +162,26 @@ public class Sector extends Observable{
         avisar(Eventos.seMovioTrabajador);
     }
 
+    void NuevoCliente(Puesto P) {
+        ultimoPuesto = P;
+        avisar(Eventos.NuevoCliente);
+    }
+
+    void FinAtencion(Puesto P) {
+        ultimoPuesto = P;
+        avisar(Eventos.FinAtencion);
+    }
+
+    public Puesto getUltimoPuesto() {
+        return ultimoPuesto;
+    }
+
+    public void setUltimoPuesto(Puesto ultimoPuesto) {
+        this.ultimoPuesto = ultimoPuesto;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return nombre+ " " + Espera();

@@ -76,7 +76,8 @@ public class Puesto extends Observable implements Comparable{
     void asignarNumero(NumeroAtencion na) {
         this.numeroActual = na;
         if(na==null) avisar(Eventos.Libre);
-        else{avisar(Eventos.NuevoCliente);}
+        else{avisar(Eventos.NuevoCliente);
+        sector.NuevoCliente(this);}
         
     }
 
@@ -122,11 +123,11 @@ public class Puesto extends Observable implements Comparable{
         numerosProcesados.add(numeroActual);
         numeroActual.setTrabajador(trabajador);
         avisar(Eventos.FinAtencion);
+        sector.FinAtencion(this);
         sector.solicitarNumero(this);
         
     }
     public void Salir(){
-        if(numeroActual!=null) sector.reingresarNumero(numeroActual);
         try {
             this.trabajador.salir();
             asignarTrabajador(null);
